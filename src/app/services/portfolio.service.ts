@@ -185,8 +185,13 @@ export class PortfolioService {
       return 'Yanina se recibió de la Tecnicatura Universitaria en Desarrollo Web en la Universidad Nacional de La Matanza (UNLaM). Además, cuenta con experiencia construyendo aplicaciones completas desde la arquitectura backend hasta interfaces reactivas modernas.';
     } else if (p.includes('proyecto') || p.includes('recred') || p.includes('invitaci')) {
       return 'Sus proyectos principales incluyen RECRED (Sistema de Acreditaciones y billetera digital para kioscos escolares) e Invitación Digital. Ambos proyectos utilizan Angular en el frontend y Spring Boot en el backend con integración a Supabase.';
-    } else if (p.includes('contacto') || p.includes('email') || p.includes('linkedin') || p.includes('contratar')) {
-      return 'Puedes contactar a Yanina a través de su LinkedIn profesional o enviándole un correo. ¡Está disponible para nuevos desafíos y proyectos!';
+    } else if (
+      p.includes('contacto') || p.includes('contactar') || p.includes('entrevista') || 
+      p.includes('email') || p.includes('mail') || p.includes('correo') || 
+      p.includes('linkedin') || p.includes('contratar') || p.includes('escribir') ||
+      p.includes('hablar') || p.includes('reunion') || p.includes('reunión')
+    ) {
+      return 'Puedes contactar a Yanina para coordinar una entrevista a través de su LinkedIn profesional o enviándole un correo. ¡Está totalmente disponible para nuevas oportunidades laborales!';
     }
     return `¡Gracias por tu pregunta! Comprendo tu consulta sobre "${pregunta}". Yanina cuenta con sólida experiencia en desarrollo Full Stack con Spring Boot y Angular. Puedes explorar la sección de Proyectos o Educación para conocer más.`;
   }
