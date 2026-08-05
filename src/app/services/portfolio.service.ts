@@ -182,9 +182,9 @@ export class PortfolioService {
     if (p.includes('tecnología') || p.includes('stack') || p.includes('herramienta')) {
       return 'Yanina domina un stack Full Stack enfocado en Java 17, Spring Boot (Spring Security, Spring Data JPA, REST APIs), Angular 17+ (Standalone components, RxJS, Signals), Supabase/PostgreSQL y TypeScript.';
     } else if (p.includes('experiencia') || p.includes('sobre mí') || p.includes('perfil') || p.includes('educación') || p.includes('unlam')) {
-      return 'Yanina estudia la Tecnicatura Universitaria en Desarrollo Web en la Universidad Nacional de La Matanza (UNLaM). Además, cuenta con experiencia construyendo aplicaciones completas desde la arquitectura backend hasta interfaces reactivas modernas.';
+      return 'Yanina se recibió de la Tecnicatura Universitaria en Desarrollo Web en la Universidad Nacional de La Matanza (UNLaM). Además, cuenta con experiencia construyendo aplicaciones completas desde la arquitectura backend hasta interfaces reactivas modernas.';
     } else if (p.includes('proyecto') || p.includes('recred') || p.includes('invitaci')) {
-      return 'Sus proyectos principales incluyen RECRED (Sistema de Acreditaciones) e Invitación Digital. Ambos proyectos utilizan Angular en el frontend y Spring Boot en el backend con integración a Supabase.';
+      return 'Sus proyectos principales incluyen RECRED (Sistema de Acreditaciones y billetera digital para kioscos escolares) e Invitación Digital. Ambos proyectos utilizan Angular en el frontend y Spring Boot en el backend con integración a Supabase.';
     } else if (p.includes('contacto') || p.includes('email') || p.includes('linkedin') || p.includes('contratar')) {
       return 'Puedes contactar a Yanina a través de su LinkedIn profesional o enviándole un correo. ¡Está disponible para nuevos desafíos y proyectos!';
     }
