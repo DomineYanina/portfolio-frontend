@@ -38,7 +38,7 @@ import { ChatMessage } from '../../models/portfolio.models';
                 <h4 class="ai-title">Gemini Assistant (Spring Boot AI API)</h4>
                 <div class="connection-status">
                   <span class="status-dot"></span>
-                  <span>Backend http://localhost:8080 Conectado</span>
+                  <span>Conectado</span>
                 </div>
               </div>
             </div>
@@ -482,7 +482,7 @@ export class ChatAsistenteComponent {
     }
   ]);
 
-  constructor(private sanitizer: DomSanitizer) {}
+  constructor(private sanitizer: DomSanitizer) { }
 
   renderMarkdown(texto: string): SafeHtml {
     if (!texto) return '';
