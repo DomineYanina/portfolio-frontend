@@ -34,11 +34,6 @@ import { CommonModule } from '@angular/common';
             <i class="fa-brands fa-github text-sand"></i>
             <span>Métricas GitHub</span>
           </a>
-          <a href="#asistente" class="nav-item ai-badge-nav">
-            <i class="fa-solid fa-wand-magic-sparkles text-copper"></i>
-            <span>Asistente IA</span>
-            <span class="sparkle-tag">Gemini</span>
-          </a>
         </nav>
 
         <!-- Action & Mobile Toggle -->

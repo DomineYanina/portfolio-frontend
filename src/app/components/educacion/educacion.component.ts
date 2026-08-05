@@ -18,9 +18,6 @@ import { Educacion } from '../../models/portfolio.models';
           <h2 class="section-title">
             Formación <span class="text-gradient">Académica</span>
           </h2>
-          <p class="section-subtitle">
-            Bases teóricas y prácticas universitarias en desarrollo web, ingeniería de software y bases de datos.
-          </p>
         </div>
 
         <!-- Loading State -->
@@ -106,6 +103,7 @@ import { Educacion } from '../../models/portfolio.models';
       display: flex;
       flex-direction: column;
       gap: 2rem;
+      width: 100%;
     }
 
     .timeline-item {
@@ -117,6 +115,8 @@ import { Educacion } from '../../models/portfolio.models';
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .timeline-item:hover {
@@ -141,6 +141,7 @@ import { Educacion } from '../../models/portfolio.models';
 
     .timeline-content {
       flex: 1;
+      min-width: 0;
     }
 
     .content-header {
@@ -150,6 +151,11 @@ import { Educacion } from '../../models/portfolio.models';
       gap: 1rem;
       margin-bottom: 1rem;
       flex-wrap: wrap;
+    }
+
+    .institution-meta {
+      min-width: 0;
+      flex: 1;
     }
 
     .degree-title {
@@ -184,6 +190,7 @@ import { Educacion } from '../../models/portfolio.models';
       align-items: center;
       gap: 0.4rem;
       white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .education-desc {
@@ -191,6 +198,8 @@ import { Educacion } from '../../models/portfolio.models';
       font-size: 0.98rem;
       line-height: 1.65;
       margin-bottom: 1.25rem;
+      overflow-wrap: break-word;
+      word-break: break-word;
     }
 
     .education-highlights {

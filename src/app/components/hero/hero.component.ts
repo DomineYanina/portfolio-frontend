@@ -27,8 +27,7 @@ import { CommonModule } from '@angular/common';
           <!-- Bio Pitch -->
           <p class="hero-bio">
             Especializada en el diseño y construcción de arquitecturas backend escalables con 
-            <strong>Java 17 & Spring Boot</strong>, combinadas con interfaces de usuario web reactivas, 
-            limpias y modernas en <strong>Angular 17+</strong> y <strong>Supabase</strong>.
+            <strong>Java 17 & Spring Boot</strong>, desplegables en <strong>Docker & AWS</strong>, combinadas con interfaces web reactivas y modernas en <strong>Angular 17+</strong>, <strong>TypeScript/JavaScript</strong> y <strong>Supabase</strong>.
           </p>
 
           <!-- Tech Stack Chips -->
@@ -38,9 +37,13 @@ import { CommonModule } from '@angular/common';
               <span class="tech-badge java"><i class="fa-brands fa-java"></i> Java 17</span>
               <span class="tech-badge spring"><i class="fa-solid fa-leaf"></i> Spring Boot</span>
               <span class="tech-badge angular"><i class="fa-brands fa-angular"></i> Angular 17+</span>
+              <span class="tech-badge docker"><i class="fa-brands fa-docker"></i> Docker</span>
+              <span class="tech-badge aws"><i class="fa-brands fa-aws"></i> AWS</span>
               <span class="tech-badge supabase"><i class="fa-solid fa-bolt"></i> Supabase</span>
               <span class="tech-badge postgres"><i class="fa-solid fa-database"></i> PostgreSQL</span>
               <span class="tech-badge ts"><i class="fa-brands fa-js"></i> TypeScript</span>
+              <span class="tech-badge js"><i class="fa-brands fa-square-js"></i> JavaScript</span>
+              <span class="tech-badge html"><i class="fa-brands fa-html5"></i> HTML5</span>
             </div>
           </div>
 
@@ -76,9 +79,9 @@ import { CommonModule } from '@angular/common';
               <p><span class="code-keyword">const</span> <span class="code-variable">developer</span> = &#123;</p>
               <p class="indent-1"><span class="code-property">nombre</span>: <span class="code-string">'Yanina Dominé'</span>,</p>
               <p class="indent-1"><span class="code-property">rol</span>: <span class="code-string">'Full Stack Developer'</span>,</p>
-              <p class="indent-1"><span class="code-property">backend</span>: [<span class="code-string">'Java 17'</span>, <span class="code-string">'Spring Boot'</span>, <span class="code-string">'PostgreSQL'</span>],</p>
-              <p class="indent-1"><span class="code-property">frontend</span>: [<span class="code-string">'Angular 17+'</span>, <span class="code-string">'TypeScript'</span>, <span class="code-string">'CSS Moderno'</span>],</p>
-              <p class="indent-1"><span class="code-property">cloudBackend</span>: <span class="code-string">'Supabase'</span>,</p>
+              <p class="indent-1"><span class="code-property">backend</span>: [<span class="code-string">'Java 17'</span>, <span class="code-string">'Spring Boot'</span>, <span class="code-string">'PostgreSQL'</span>, <span class="code-string">'Docker'</span>],</p>
+              <p class="indent-1"><span class="code-property">frontend</span>: [<span class="code-string">'Angular 17+'</span>, <span class="code-string">'TypeScript'</span>, <span class="code-string">'JavaScript'</span>, <span class="code-string">'HTML5/CSS'</span>],</p>
+              <p class="indent-1"><span class="code-property">cloudInfra</span>: [<span class="code-string">'AWS'</span>, <span class="code-string">'Supabase'</span>],</p>
               <p class="indent-1"><span class="code-property">proyectosDestacados</span>: [<span class="code-string">'RECRED'</span>, <span class="code-string">'Invitación Digital'</span>],</p>
               <p class="indent-1"><span class="code-property">iaIntegration</span>: <span class="code-string">'Google Gemini API'</span>,</p>
               <p class="indent-1"><span class="code-property">estado</span>: <span class="code-string">'Ready for Production 🚀'</span></p>
@@ -190,9 +193,13 @@ import { CommonModule } from '@angular/common';
     .tech-badge.java i { color: #f89820; }
     .tech-badge.spring i { color: #6db33f; }
     .tech-badge.angular i { color: #dd0031; }
+    .tech-badge.docker i { color: #2496ed; }
+    .tech-badge.aws i { color: #ff9900; }
     .tech-badge.supabase i { color: #3ecf8e; }
     .tech-badge.postgres i { color: #64b5f6; }
     .tech-badge.ts i { color: var(--accent-copper-hover); }
+    .tech-badge.js i { color: #f7df1e; }
+    .tech-badge.html i { color: #e34c26; }
 
     .hero-ctas {
       display: flex;

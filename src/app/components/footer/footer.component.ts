@@ -35,6 +35,7 @@ import { CommonModule } from '@angular/common';
               <li><a href="#hero"><i class="fa-solid fa-angle-right"></i> Inicio</a></li>
               <li><a href="#sobre-mi"><i class="fa-solid fa-angle-right"></i> Sobre mí</a></li>
               <li><a href="#proyectos"><i class="fa-solid fa-angle-right"></i> Proyectos</a></li>
+              <li><a href="#educacion"><i class="fa-solid fa-angle-right"></i> Educación</a></li>
               <li><a href="#metricas"><i class="fa-solid fa-angle-right"></i> Métricas GitHub</a></li>
               <li><a href="#asistente"><i class="fa-solid fa-angle-right"></i> Asistente IA</a></li>
             </ul>
@@ -44,9 +45,10 @@ import { CommonModule } from '@angular/common';
           <div class="footer-col">
             <h4 class="footer-title">Tecnologías</h4>
             <ul class="footer-links text-mono">
-              <li><span class="tech-item"><i class="fa-brands fa-java text-orange"></i> Java 17</span></li>
-              <li><span class="tech-item"><i class="fa-solid fa-leaf text-green"></i> Spring Boot 3</span></li>
+              <li><span class="tech-item"><i class="fa-brands fa-java text-orange"></i> Java 17 / Spring</span></li>
               <li><span class="tech-item"><i class="fa-brands fa-angular text-red"></i> Angular 17+</span></li>
+              <li><span class="tech-item"><i class="fa-brands fa-docker text-blue"></i> Docker & AWS</span></li>
+              <li><span class="tech-item"><i class="fa-brands fa-js text-yellow"></i> JS / TS / HTML5</span></li>
               <li><span class="tech-item"><i class="fa-solid fa-bolt text-emerald"></i> Supabase</span></li>
               <li><span class="tech-item"><i class="fa-solid fa-wand-magic-sparkles text-copper"></i> Gemini AI</span></li>
             </ul>
@@ -176,6 +178,8 @@ import { CommonModule } from '@angular/common';
     .text-red { color: #dd0031; }
     .text-emerald { color: #3ecf8e; }
     .text-copper { color: var(--accent-copper-hover); }
+    .text-blue { color: #2496ed; }
+    .text-yellow { color: #f7df1e; }
 
     .contact-desc {
       color: var(--text-secondary);
