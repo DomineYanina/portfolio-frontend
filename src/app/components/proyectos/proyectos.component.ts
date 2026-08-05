@@ -26,7 +26,10 @@ import { Proyecto } from '../../models/portfolio.models';
         <!-- Loading State -->
         <div *ngIf="cargando()" class="loading-container">
           <div class="spinner"></div>
-          <p class="text-mono">Cargando proyectos desde Spring Boot (localhost:8080)...</p>
+          <p class="text-mono">Cargando proyectos desde el servidor backend...</p>
+          <small class="text-muted" style="display: block; margin-top: 0.5rem;">
+            (Si el servidor de la nube estaba suspendido, la respuesta inicial puede tomar unos segundos)
+          </small>
         </div>
 
         <!-- Error / Empty State -->

@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 import {
   Proyecto,
   Educacion,
@@ -15,7 +16,7 @@ import {
 })
 export class PortfolioService {
   private readonly http = inject(HttpClient);
-  private readonly baseUrl = 'http://localhost:8080/api/portfolio';
+  private readonly baseUrl = environment.apiUrl;
 
   /**
    * Obtiene la lista de proyectos desde el backend Spring Boot.
@@ -109,7 +110,7 @@ export class PortfolioService {
         descripcion: 'Backend de arquitectura limpia en Java 17 y Spring Boot que provee los endpoints para métricas de GitHub, administración de proyectos e integración con la API de Google Gemini para respuesta automatizada a reclutadores.',
         tecnologias: ['Java 17', 'Spring Boot 3', 'Spring AI / Gemini API', 'Maven', 'Lombok'],
         githubUrl: 'https://github.com/DomineYanina/portfolio-backend',
-        deployUrl: 'http://localhost:8080/api/portfolio/proyectos',
+        deployUrl: 'https://github.com/DomineYanina/portfolio-backend',
         destacado: false
       }
     ];
@@ -174,7 +175,7 @@ export class PortfolioService {
   }
 
   /**
-   * Simulación de respuesta de IA cuando el backend local no está encendido
+   * Simulación de respuesta de IA cuando el backend no está disponible
    */
   private generarRespuestaFallback(pregunta: string): string {
     const p = pregunta.toLowerCase();
@@ -187,6 +188,6 @@ export class PortfolioService {
     } else if (p.includes('contacto') || p.includes('email') || p.includes('linkedin') || p.includes('contratar')) {
       return 'Puedes contactar a Yanina a través de su LinkedIn profesional o enviándole un correo. ¡Está disponible para nuevos desafíos y proyectos!';
     }
-    return `¡Gracias por tu pregunta! Comprendo tu consulta sobre "${pregunta}". Yanina cuenta con sólida experiencia en desarrollo Full Stack con Spring Boot y Angular. Si conectas el backend local en http://localhost:8080, podrás recibir respuestas personalizadas mediante la API de Gemini.`;
+    return `¡Gracias por tu pregunta! Comprendo tu consulta sobre "${pregunta}". Yanina cuenta con sólida experiencia en desarrollo Full Stack con Spring Boot y Angular. Puedes explorar la sección de Proyectos o Educación para conocer más.`;
   }
 }

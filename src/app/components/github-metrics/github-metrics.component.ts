@@ -26,7 +26,7 @@ import { GithubMetrics } from '../../models/portfolio.models';
         <!-- Loading -->
         <div *ngIf="cargando()" class="loading-container">
           <div class="spinner"></div>
-          <p class="text-mono">Obteniendo métricas de GitHub (GET /api/portfolio/metrics/github)...</p>
+          <p class="text-mono">Obteniendo métricas sincronizadas de GitHub...</p>
         </div>
 
         <!-- Metrics Visual Panel -->

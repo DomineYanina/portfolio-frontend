@@ -525,7 +525,7 @@ export class ChatAsistenteComponent {
         const errorMsg: ChatMessage = {
           id: (Date.now() + 1).toString(),
           sender: 'assistant',
-          text: 'Ocurrió un contratiempo temporal de red al consultar el servidor Spring Boot (http://localhost:8080/api/portfolio/chat/preguntar).',
+          text: 'El servidor backend en la nube se está activando o experimenta latencia. Por favor intenta realizar tu pregunta nuevamente en unos instantes.',
           timestamp: new Date()
         };
         this.historialmensajes.update(prev => [...prev, errorMsg]);

@@ -23,7 +23,10 @@ import { Educacion } from '../../models/portfolio.models';
         <!-- Loading State -->
         <div *ngIf="cargando()" class="loading-container">
           <div class="spinner"></div>
-          <p class="text-mono">Cargando formación académica desde Spring Boot (GET /api/portfolio/educacion)...</p>
+          <p class="text-mono">Cargando formación académica desde el servidor backend...</p>
+          <small class="text-muted" style="display: block; margin-top: 0.5rem;">
+            (Conectando con el servidor en la nube)
+          </small>
         </div>
 
         <!-- Timeline / Cards List -->
