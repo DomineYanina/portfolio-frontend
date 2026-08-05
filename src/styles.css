@@ -1,1 +1,245 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global Developer Design System - "Cobre Estructurado" Palette */
+:root {
+  /* Cobre Estructurado Core Backgrounds (Carbón Suave & Pizarra Oscuro) */
+  --bg-dark: #121417;
+  --bg-surface: #1a1d22;
+  --bg-card: #20242a;
+  --bg-card-hover: #282e36;
+  
+  /* Text System (Gris Perla Luminoso & Pizarra) */
+  --text-primary: #E2E8F0;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+  
+  /* Primary Accent: Cobre Tostado / Terracota Cálido */
+  --accent-copper: #C25E38;
+  --accent-copper-hover: #D96B43;
+  --accent-copper-glow: rgba(194, 94, 56, 0.25);
+  
+  /* Secondary Accent: Arena Sutil */
+  --accent-sand: #F5F5F4;
+  --accent-sand-muted: #D6D3D1;
+  --accent-sand-glow: rgba(245, 245, 244, 0.12);
+  
+  /* System Emerald for Connected Status */
+  --accent-emerald: #34D399;
+  --accent-emerald-glow: rgba(52, 211, 153, 0.2);
+
+  /* Subtle Borders & Focus states */
+  --border-subtle: rgba(245, 245, 244, 0.12);
+  --border-hover: rgba(194, 94, 56, 0.45);
+  
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Fira Code', monospace;
+  
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+  
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.35);
+  --shadow-glow: 0 8px 30px rgba(194, 94, 56, 0.18);
+}
+
+/* Reset & Base Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: radial-gradient(circle at 50% 0%, #251c1a 0%, #121417 70%);
+  background-attachment: fixed;
+}
+
+/* Typography Helpers */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #E2E8F0 0%, var(--accent-sand) 40%, var(--accent-copper-hover) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-copper {
+  color: var(--accent-copper-hover);
+}
+
+.text-sand {
+  color: var(--accent-sand);
+}
+
+.text-mono {
+  font-family: var(--font-mono);
+}
+
+/* Container Utility */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section-padding {
+  padding: 6rem 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 1rem;
+  background: rgba(245, 245, 244, 0.08);
+  border: 1px solid rgba(245, 245, 244, 0.2);
+  border-radius: var(--radius-full);
+  color: var(--accent-sand);
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+}
+
+/* Glassmorphism Panel - Cobre Estructurado */
+.glass-panel {
+  background: rgba(26, 29, 34, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 8px 30px rgba(194, 94, 56, 0.16);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  border: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-copper) 0%, #a04725 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 14px var(--accent-copper-glow);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(194, 94, 56, 0.45);
+  background: linear-gradient(135deg, var(--accent-copper-hover) 0%, var(--accent-copper) 100%);
+}
+
+.btn-secondary {
+  background: rgba(245, 245, 244, 0.08);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+}
+
+.btn-secondary:hover {
+  background: rgba(245, 245, 244, 0.16);
+  border-color: rgba(245, 245, 244, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--accent-copper-hover);
+  border: 1px solid rgba(194, 94, 56, 0.4);
+}
+
+.btn-outline:hover {
+  background: var(--accent-copper-glow);
+  border-color: var(--accent-copper-hover);
+  transform: translateY(-2px);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #282e36;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-copper);
+}
+
+/* Pulse animation */
+@keyframes pulseDot {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(52, 211, 153, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-emerald);
+  border-radius: 50%;
+  animation: pulseDot 2s infinite;
+  display: inline-block;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 4rem 0;
+  }
+  .section-title {
+    font-size: 1.75rem;
+  }
+}
