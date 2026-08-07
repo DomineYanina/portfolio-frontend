@@ -49,9 +49,17 @@ export interface ChatRespuestaResponse {
   respuesta: string;
 }
 
+export interface CategoriaPreguntas {
+  id: string;
+  tituloKey: string;
+  icono: string;
+  preguntasKeys: string[];
+}
+
 export interface ChatMessage {
   id: string;
   sender: 'user' | 'assistant';
   text: string;
   timestamp: Date;
 }
+

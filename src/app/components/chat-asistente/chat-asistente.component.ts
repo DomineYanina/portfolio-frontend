@@ -6,7 +6,7 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { marked } from 'marked';
 import { PortfolioService } from '../../services/portfolio.service';
-import { ChatMessage } from '../../models/portfolio.models';
+import { ChatMessage, CategoriaPreguntas } from '../../models/portfolio.models';
 
 @Component({
   selector: 'app-chat-asistente',
@@ -48,20 +48,6 @@ import { ChatMessage } from '../../models/portfolio.models';
             <button class="btn-clear" (click)="reiniciarChat()" [attr.title]="'CHAT.REINICIAR_TOOLTIP' | translate">
               <i class="fa-solid fa-rotate-right"></i>
             </button>
-          </div>
-
-          <!-- Quick Suggestion Buttons for Recruiters -->
-          <div class="quick-suggestions-bar">
-            <span class="suggestions-label"><i class="fa-solid fa-lightbulb text-copper"></i> {{ 'CHAT.PREGUNTAS_RAPIDAS' | translate }}</span>
-            <div class="suggestions-chips">
-              <button
-                *ngFor="let s of sugerencias"
-                (click)="enviarPreguntaRapida(s)"
-                [disabled]="cargando()"
-                class="chip-btn">
-                {{ s }}
-              </button>
-            </div>
           </div>
 
           <!-- Messages Scrollable Body Area -->
@@ -108,9 +94,58 @@ import { ChatMessage } from '../../models/portfolio.models';
             </div>
           </div>
 
+          <!-- Quick Categorized Suggestions Bar (Positioned directly above text input form) -->
+          @if (mostrarSugerencias()) {
+            <div class="quick-suggestions-bar">
+              @if (categoriaSeleccionada() === null) {
+                <div class="suggestions-chips">
+                  <button
+                    *ngFor="let cat of categorias"
+                    (click)="seleccionarCategoria(cat)"
+                    [disabled]="cargando()"
+                    type="button"
+                    class="chip-btn category-chip">
+                    <i [class]="cat.icono"></i>
+                    <span>{{ cat.tituloKey | translate }}</span>
+                  </button>
+                </div>
+              } @else {
+                <div class="suggestions-chips questions-container">
+                  <button
+                    (click)="seleccionarCategoria(null)"
+                    type="button"
+                    class="chip-btn btn-back">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>{{ 'CHAT.VOLVER' | translate }}</span>
+                  </button>
+                  <div class="questions-list">
+                    <button
+                      *ngFor="let pKey of categoriaSeleccionada()!.preguntasKeys"
+                      (click)="enviarPreguntaRapida(pKey)"
+                      [disabled]="cargando()"
+                      type="button"
+                      class="chip-btn question-chip">
+                      {{ pKey | translate }}
+                    </button>
+                  </div>
+                </div>
+              }
+            </div>
+          }
+
           <!-- Chat Input Controls Bar -->
           <div class="chat-input-container">
             <form (ngSubmit)="enviarMensaje()" class="chat-form">
+              <!-- Toggle suggestions button -->
+              <button
+                type="button"
+                (click)="toggleSugerencias()"
+                class="btn-toggle-suggestions"
+                [class.active]="mostrarSugerencias()"
+                [attr.title]="'CHAT.PREGUNTAS_RAPIDAS' | translate">
+                <i class="fa-solid fa-lightbulb"></i>
+              </button>
+
               <input
                 type="text"
                 [(ngModel)]="nuevaPregunta"
@@ -220,50 +255,110 @@ import { ChatMessage } from '../../models/portfolio.models';
       }
     }
 
-    /* Quick Suggestions */
+    /* Quick Suggestions Bar */
     .quick-suggestions-bar {
-      padding: 0.75rem 1.5rem;
-      background: var(--bg-main);
-      border-bottom: 1px solid var(--border-color);
+      padding: 0.85rem 1.5rem;
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border-color);
       display: flex;
-      align-items: center;
-      gap: 1rem;
-      overflow-x: auto;
+      flex-direction: column;
+      gap: 0.75rem;
+      width: 100%;
+      box-sizing: border-box;
+      flex-shrink: 0;
+      animation: fadeIn 0.25s ease-out;
     }
 
-    .suggestions-label {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      white-space: nowrap;
-      font-weight: 600;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .suggestions-chips {
       display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      align-items: center;
+      width: 100%;
+    }
+
+    .questions-container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.65rem;
+      width: 100%;
+    }
+
+    .questions-list {
+      display: flex;
+      flex-wrap: wrap;
       gap: 0.5rem;
+      flex: 1;
     }
 
     .chip-btn {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       color: var(--text-secondary);
-      font-size: 0.8rem;
-      padding: 0.3rem 0.75rem;
+      font-size: 0.85rem;
+      padding: 0.45rem 0.95rem;
       border-radius: var(--radius-full);
-      white-space: nowrap;
+      white-space: normal;
+      text-align: left;
       cursor: pointer;
-      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
       &:hover:not(:disabled) {
         border-color: var(--accent-copper-hover);
         color: var(--text-main);
         background: var(--accent-copper-glow);
+        transform: translateY(-1px);
       }
 
       &:disabled {
         opacity: 0.5;
         cursor: not-allowed;
       }
+    }
+
+    .category-chip {
+      font-weight: 600;
+      background: var(--bg-card);
+      border-color: var(--border-color);
+      color: var(--text-main);
+
+      i {
+        color: var(--accent-copper-hover);
+        font-size: 0.95rem;
+      }
+
+      &:hover:not(:disabled) {
+        border-color: var(--accent-copper-hover);
+        background: var(--accent-copper-glow);
+      }
+    }
+
+    .btn-back {
+      background: var(--btn-secondary-bg);
+      border-color: var(--border-color);
+      color: var(--accent-copper-hover);
+      font-weight: 600;
+      flex-shrink: 0;
+
+      &:hover:not(:disabled) {
+        background: var(--accent-copper-glow);
+        color: var(--text-main);
+        border-color: var(--accent-copper-hover);
+      }
+    }
+
+    .question-chip {
+      font-size: 0.82rem;
+      line-height: 1.35;
     }
 
     /* Chat Messages Body */
@@ -426,6 +521,36 @@ import { ChatMessage } from '../../models/portfolio.models';
     .chat-form {
       display: flex;
       gap: 0.75rem;
+      align-items: center;
+    }
+
+    .btn-toggle-suggestions {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+      &:hover {
+        color: var(--accent-copper-hover);
+        border-color: var(--accent-copper-hover);
+        background: var(--accent-copper-glow);
+      }
+
+      &.active {
+        background: var(--accent-copper-glow);
+        color: var(--accent-copper-hover);
+        border-color: var(--accent-copper-hover);
+        box-shadow: 0 0 0 2px var(--accent-copper-glow);
+      }
     }
 
     .chat-input {
@@ -448,18 +573,25 @@ import { ChatMessage } from '../../models/portfolio.models';
 
     .btn-send {
       padding: 0.75rem 1.5rem;
+      height: 44px;
     }
 
     @media (max-width: 768px) {
       .chat-window-container {
-        height: 550px;
+        height: 600px;
       }
       .message-wrapper {
         max-width: 90%;
       }
       .quick-suggestions-bar {
+        padding: 0.75rem 1rem;
+      }
+      .questions-container {
         flex-direction: column;
         align-items: flex-start;
+      }
+      .questions-list {
+        width: 100%;
       }
     }
   `]
@@ -474,7 +606,40 @@ export class ChatAsistenteComponent implements OnInit, OnDestroy {
   nuevaPregunta = '';
   cargando = signal<boolean>(false);
 
-  sugerencias: string[] = [];
+  mostrarSugerencias = signal<boolean>(false);
+  categoriaSeleccionada = signal<CategoriaPreguntas | null>(null);
+
+  categorias: CategoriaPreguntas[] = [
+    {
+      id: 'experiencia',
+      tituloKey: 'CHAT.CATEGORIAS.EXPERIENCIA.TITULO',
+      icono: 'fa-solid fa-user-tie',
+      preguntasKeys: [
+        'CHAT.CATEGORIAS.EXPERIENCIA.P1',
+        'CHAT.CATEGORIAS.EXPERIENCIA.P2',
+        'CHAT.CATEGORIAS.EXPERIENCIA.P3'
+      ]
+    },
+    {
+      id: 'proyectos',
+      tituloKey: 'CHAT.CATEGORIAS.PROYECTOS.TITULO',
+      icono: 'fa-solid fa-folder-code',
+      preguntasKeys: [
+        'CHAT.CATEGORIAS.PROYECTOS.P1',
+        'CHAT.CATEGORIAS.PROYECTOS.P2',
+        'CHAT.CATEGORIAS.PROYECTOS.P3'
+      ]
+    },
+    {
+      id: 'metricas_contacto',
+      tituloKey: 'CHAT.CATEGORIAS.METRICAS_CONTACTO.TITULO',
+      icono: 'fa-solid fa-chart-line',
+      preguntasKeys: [
+        'CHAT.CATEGORIAS.METRICAS_CONTACTO.P1',
+        'CHAT.CATEGORIAS.METRICAS_CONTACTO.P2'
+      ]
+    }
+  ];
 
   historialmensajes = signal<ChatMessage[]>([]);
 
@@ -493,28 +658,23 @@ export class ChatAsistenteComponent implements OnInit, OnDestroy {
     }
   }
 
-  private cargarTextosTraducidos(): void {
-    this.translate.get([
-      'CHAT.SUGERENCIA_1',
-      'CHAT.SUGERENCIA_2',
-      'CHAT.SUGERENCIA_3',
-      'CHAT.SUGERENCIA_4',
-      'CHAT.MENSAJE_INICIAL'
-    ]).subscribe(res => {
-      this.sugerencias = [
-        res['CHAT.SUGERENCIA_1'],
-        res['CHAT.SUGERENCIA_2'],
-        res['CHAT.SUGERENCIA_3'],
-        res['CHAT.SUGERENCIA_4']
-      ];
+  toggleSugerencias(): void {
+    this.mostrarSugerencias.update(prev => !prev);
+  }
 
+  seleccionarCategoria(categoria: CategoriaPreguntas | null): void {
+    this.categoriaSeleccionada.set(categoria);
+  }
+
+  private cargarTextosTraducidos(): void {
+    this.translate.get('CHAT.MENSAJE_INICIAL').subscribe(msg => {
       const currentMsgs = this.historialmensajes();
       if (currentMsgs.length === 0 || (currentMsgs.length === 1 && currentMsgs[0].sender === 'assistant')) {
         this.historialmensajes.set([
           {
             id: '1',
             sender: 'assistant',
-            text: res['CHAT.MENSAJE_INICIAL'],
+            text: msg,
             timestamp: new Date()
           }
         ]);
@@ -580,12 +740,15 @@ export class ChatAsistenteComponent implements OnInit, OnDestroy {
     });
   }
 
-  enviarPreguntaRapida(pregunta: string) {
-    this.nuevaPregunta = pregunta;
+  enviarPreguntaRapida(keyOrText: string) {
+    const textoTraducido = this.translate.instant(keyOrText);
+    this.nuevaPregunta = textoTraducido || keyOrText;
     this.enviarMensaje();
   }
 
   reiniciarChat() {
+    this.mostrarSugerencias.set(false);
+    this.categoriaSeleccionada.set(null);
     this.translate.get('CHAT.MENSAJE_REINICIADO').subscribe(text => {
       this.historialmensajes.set([
         {
@@ -610,3 +773,6 @@ export class ChatAsistenteComponent implements OnInit, OnDestroy {
     }, 100);
   }
 }
+
+
+

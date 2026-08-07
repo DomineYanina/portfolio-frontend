@@ -158,6 +158,7 @@
     "ESTADO_CONECTADO": "Connected",
     "REINICIAR_TOOLTIP": "Reset conversation",
     "PREGUNTAS_RAPIDAS": "Quick questions:",
+    "VOLVER": "Back",
     "SENDER_BOT": "Yanina's Assistant",
     "SENDER_USER": "You (Recruiter)",
     "CARGANDO_BOT": "AI typing",
@@ -169,7 +170,26 @@
     "SUGERENCIA_1": "What is Yanina's experience?",
     "SUGERENCIA_2": "What technologies does she use for backend and frontend?",
     "SUGERENCIA_3": "What features does the RECRED project have?",
-    "SUGERENCIA_4": "How can I contact her for an interview?"
+    "SUGERENCIA_4": "How can I contact her for an interview?",
+    "CATEGORIAS": {
+      "EXPERIENCIA": {
+        "TITULO": "Experience & Profile",
+        "P1": "What is Yanina's experience?",
+        "P2": "What technologies does she handle for backend and frontend?",
+        "P3": "Which languages and tools does she use most frequently day-to-day?"
+      },
+      "PROYECTOS": {
+        "TITULO": "Projects",
+        "P1": "What features does the RECRED project have?",
+        "P2": "What is the 'Digital Invitation' project about and what technologies does it use?",
+        "P3": "How is this portfolio's backend microservice designed?"
+      },
+      "METRICAS_CONTACTO": {
+        "TITULO": "Metrics & Contact",
+        "P1": "How many public repositories and stars does Yanina have on GitHub?",
+        "P2": "How can I contact her for an interview?"
+      }
+    }
   },
   "FOOTER": {
     "BIO": "Full Stack Developer passionate about clean software engineering, Java 17 / Spring Boot architectures, and dynamic interfaces in Angular.",

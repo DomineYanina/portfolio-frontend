@@ -158,6 +158,7 @@
     "ESTADO_CONECTADO": "Conectado",
     "REINICIAR_TOOLTIP": "Reiniciar conversación",
     "PREGUNTAS_RAPIDAS": "Preguntas rápidas:",
+    "VOLVER": "Volver",
     "SENDER_BOT": "Asistente de Yanina",
     "SENDER_USER": "Tú (Reclutador)",
     "CARGANDO_BOT": "IA escribiendo",
@@ -169,7 +170,26 @@
     "SUGERENCIA_1": "¿Cuál es la experiencia de Yanina?",
     "SUGERENCIA_2": "¿Qué tecnologías maneja en backend y frontend?",
     "SUGERENCIA_3": "¿Qué características tiene el proyecto RECRED?",
-    "SUGERENCIA_4": "¿Cómo puedo contactarla para una entrevista?"
+    "SUGERENCIA_4": "¿Cómo puedo contactarla para una entrevista?",
+    "CATEGORIAS": {
+      "EXPERIENCIA": {
+        "TITULO": "Experiencia y Perfil",
+        "P1": "¿Cuál es la experiencia de Yanina?",
+        "P2": "¿Qué tecnologías maneja en backend y frontend?",
+        "P3": "¿Qué lenguajes y herramientas utiliza con mayor frecuencia en su día a día?"
+      },
+      "PROYECTOS": {
+        "TITULO": "Proyectos",
+        "P1": "¿Qué características tiene el proyecto RECRED?",
+        "P2": "¿De qué trata el proyecto 'Invitación Digital' y qué tecnologías implementa?",
+        "P3": "¿Cómo está diseñado el microservicio backend de este portfolio?"
+      },
+      "METRICAS_CONTACTO": {
+        "TITULO": "Métricas y Contacto",
+        "P1": "¿Cuántos repositorios públicos y estrellas tiene Yanina en su perfil de GitHub?",
+        "P2": "¿Cómo puedo contactarla para una entrevista?"
+      }
+    }
   },
   "FOOTER": {
     "BIO": "Desarrolladora Full Stack apasionada por la ingeniería de software limpia, arquitecturas en Java 17 / Spring Boot e interfaces dinámicas en Angular.",
