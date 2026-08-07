@@ -1,7 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslatePipe } from '@ngx-translate/core';
 import { LanguageSwitcherComponent } from '../language-switcher/language-switcher.component';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-navbar',
@@ -21,19 +22,19 @@ import { LanguageSwitcherComponent } from '../language-switcher/language-switche
         <!-- Desktop Navigation Links -->
         <nav class="nav-links">
           <a href="#sobre-mi" class="nav-item">
-            <i class="fa-solid fa-user text-sand"></i>
+            <i class="fa-solid fa-user text-copper"></i>
             <span>{{ 'NAV.SOBRE_MI' | translate }}</span>
           </a>
           <a href="#proyectos" class="nav-item">
-            <i class="fa-solid fa-code text-sand"></i>
+            <i class="fa-solid fa-code text-copper"></i>
             <span>{{ 'NAV.PROYECTOS' | translate }}</span>
           </a>
           <a href="#educacion" class="nav-item">
-            <i class="fa-solid fa-graduation-cap text-sand"></i>
+            <i class="fa-solid fa-graduation-cap text-copper"></i>
             <span>{{ 'NAV.EDUCACION' | translate }}</span>
           </a>
           <a href="#metricas" class="nav-item">
-            <i class="fa-brands fa-github text-sand"></i>
+            <i class="fa-brands fa-github text-copper"></i>
             <span>{{ 'NAV.METRICAS' | translate }}</span>
           </a>
         </nav>
@@ -42,10 +43,21 @@ import { LanguageSwitcherComponent } from '../language-switcher/language-switche
         <div class="nav-actions">
           <app-language-switcher></app-language-switcher>
 
+          <!-- Theme Toggle Button (Dark / Light) -->
+          <button 
+            type="button" 
+            class="theme-toggle-btn" 
+            (click)="themeService.toggleTheme()" 
+            [attr.aria-label]="themeService.currentTheme() === 'dark' ? ('NAV.MODO_CLARO' | translate) : ('NAV.MODO_OSCURO' | translate)"
+            [attr.title]="themeService.currentTheme() === 'dark' ? ('NAV.MODO_CLARO' | translate) : ('NAV.MODO_OSCURO' | translate)">
+            <i class="fa-solid" [class.fa-sun]="themeService.currentTheme() === 'dark'" [class.fa-moon]="themeService.currentTheme() === 'light'"></i>
+          </button>
+
           <a href="#asistente" class="btn btn-primary btn-sm">
             <i class="fa-solid fa-comments"></i>
             <span>{{ 'NAV.HABLAR_IA' | translate }}</span>
           </a>
+          
           <button 
             class="mobile-toggle-btn" 
             (click)="toggleMenu()"
@@ -73,8 +85,16 @@ import { LanguageSwitcherComponent } from '../language-switcher/language-switche
           <a href="#asistente" (click)="closeMenu()" class="mobile-nav-item">
             <i class="fa-solid fa-wand-magic-sparkles"></i> {{ 'NAV.ASISTENTE_IA' | translate }}
           </a>
-          <div class="mobile-lang-switcher">
+          <div class="mobile-controls">
             <app-language-switcher></app-language-switcher>
+            <button 
+              type="button" 
+              class="theme-toggle-btn" 
+              (click)="themeService.toggleTheme()" 
+              [attr.aria-label]="themeService.currentTheme() === 'dark' ? ('NAV.MODO_CLARO' | translate) : ('NAV.MODO_OSCURO' | translate)"
+              [attr.title]="themeService.currentTheme() === 'dark' ? ('NAV.MODO_CLARO' | translate) : ('NAV.MODO_OSCURO' | translate)">
+              <i class="fa-solid" [class.fa-sun]="themeService.currentTheme() === 'dark'" [class.fa-moon]="themeService.currentTheme() === 'light'"></i>
+            </button>
           </div>
         </nav>
       </div>
@@ -88,10 +108,10 @@ import { LanguageSwitcherComponent } from '../language-switcher/language-switche
       right: 0;
       z-index: 1000;
       padding: 1.25rem 0;
-      background: rgba(18, 20, 23, 0.88);
+      background: var(--navbar-bg);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-color);
       transition: all 0.3s ease;
     }
 
@@ -108,7 +128,7 @@ import { LanguageSwitcherComponent } from '../language-switcher/language-switche
       font-family: var(--font-mono);
       font-size: 1.25rem;
       font-weight: 700;
-      color: var(--text-primary);
+      color: var(--text-main);
       text-decoration: none;
     }
 
@@ -117,7 +137,7 @@ import { LanguageSwitcherComponent } from '../language-switcher/language-switche
     }
 
     .brand-name {
-      color: var(--text-primary);
+      color: var(--text-main);
     }
 
     .brand-tag {
@@ -146,29 +166,35 @@ import { LanguageSwitcherComponent } from '../language-switcher/language-switche
     }
 
     .nav-item:hover {
-      color: var(--text-primary);
+      color: var(--text-main);
       transform: translateY(-1px);
-    }
-
-    .ai-badge-nav {
-      position: relative;
-    }
-
-    .sparkle-tag {
-      font-size: 0.65rem;
-      background: rgba(194, 94, 56, 0.15);
-      color: var(--accent-copper-hover);
-      border: 1px solid rgba(194, 94, 56, 0.3);
-      padding: 0.15rem 0.4rem;
-      border-radius: var(--radius-full);
-      font-family: var(--font-mono);
-      font-weight: 600;
     }
 
     .nav-actions {
       display: flex;
       align-items: center;
       gap: 1rem;
+    }
+
+    .theme-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      background: var(--btn-secondary-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-full);
+      color: var(--accent-copper-hover);
+      cursor: pointer;
+      font-size: 1.05rem;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .theme-toggle-btn:hover {
+      background: var(--accent-copper-glow);
+      border-color: var(--accent-copper-hover);
+      transform: rotate(15deg) scale(1.05);
     }
 
     .btn-sm {
@@ -178,9 +204,9 @@ import { LanguageSwitcherComponent } from '../language-switcher/language-switche
 
     .mobile-toggle-btn {
       display: none;
-      background: rgba(245, 245, 244, 0.08);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-primary);
+      background: var(--btn-secondary-bg);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
       width: 40px;
       height: 40px;
       border-radius: var(--radius-sm);
@@ -192,8 +218,8 @@ import { LanguageSwitcherComponent } from '../language-switcher/language-switche
 
     .mobile-dropdown {
       display: none;
-      background: var(--bg-surface);
-      border-bottom: 1px solid var(--border-subtle);
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
       padding: 1rem 1.5rem;
     }
 
@@ -221,6 +247,13 @@ import { LanguageSwitcherComponent } from '../language-switcher/language-switche
       }
     }
 
+    .mobile-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding-top: 0.5rem;
+    }
+
     @media (max-width: 868px) {
       .nav-links {
         display: none;
@@ -232,6 +265,7 @@ import { LanguageSwitcherComponent } from '../language-switcher/language-switche
   `]
 })
 export class NavbarComponent {
+  readonly themeService = inject(ThemeService);
   isMenuOpen = signal<boolean>(false);
   isScrolled = signal<boolean>(false);
 

@@ -39,8 +39,8 @@ import { TranslateService } from '@ngx-translate/core';
       align-items: center;
       gap: 0.35rem;
       padding: 0.25rem 0.6rem;
-      background: rgba(245, 245, 244, 0.05);
-      border: 1px solid var(--border-subtle);
+      background: var(--btn-secondary-bg);
+      border: 1px solid var(--border-color);
       border-radius: var(--radius-full);
       backdrop-filter: blur(8px);
       transition: all 0.25s ease;
@@ -48,7 +48,7 @@ import { TranslateService } from '@ngx-translate/core';
 
     .lang-switcher-container:hover {
       border-color: var(--border-hover);
-      background: rgba(245, 245, 244, 0.08);
+      background: var(--btn-secondary-hover);
     }
 
     .lang-btn {
@@ -69,7 +69,7 @@ import { TranslateService } from '@ngx-translate/core';
     }
 
     .lang-btn:hover {
-      color: var(--text-primary);
+      color: var(--text-main);
     }
 
     .lang-btn.active {
@@ -89,7 +89,7 @@ import { TranslateService } from '@ngx-translate/core';
     }
 
     .lang-divider {
-      color: var(--border-subtle);
+      color: var(--border-color);
       font-size: 0.75rem;
       user-select: none;
     }

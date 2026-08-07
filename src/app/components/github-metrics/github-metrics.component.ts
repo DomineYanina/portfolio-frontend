@@ -14,7 +14,7 @@ import { GithubMetrics, GithubRepo } from '../../models/portfolio.models';
         <!-- Section Header -->
         <div class="section-header">
           <span class="section-tag">
-            <i class="fa-brands fa-github"></i> {{ 'GITHUB.TAG' | translate }}
+            <i class="fa-brands fa-github text-copper"></i> {{ 'GITHUB.TAG' | translate }}
           </span>
           <h2 class="section-title">
             {{ 'GITHUB.TITLE' | translate }} <span class="text-gradient">{{ 'GITHUB.TITLE_HIGHLIGHT' | translate }}</span>
@@ -79,7 +79,7 @@ import { GithubMetrics, GithubRepo } from '../../models/portfolio.models';
             <div *ngFor="let repo of metrics()?.recentRepos" class="repo-card glass-panel">
               <div class="repo-header">
                 <a [href]="repo.htmlUrl" target="_blank" rel="noopener noreferrer" class="repo-name">
-                  <i class="fa-solid fa-book-bookmark text-sand"></i>
+                  <i class="fa-solid fa-book-bookmark text-copper"></i>
                   <span>{{ repo.name }}</span>
                 </a>
                 <span class="repo-stars">
@@ -110,7 +110,7 @@ import { GithubMetrics, GithubRepo } from '../../models/portfolio.models';
   `,
   styles: [`
     .github-section {
-      background: radial-gradient(circle at 80% 20%, rgba(194, 94, 56, 0.08) 0%, transparent 50%);
+      background: radial-gradient(circle at 80% 20%, var(--accent-copper-glow) 0%, transparent 50%);
     }
 
     .loading-container {
@@ -142,6 +142,7 @@ import { GithubMetrics, GithubRepo } from '../../models/portfolio.models';
       gap: 2rem;
       flex-wrap: wrap;
       background: var(--bg-card);
+      border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
     }
 
@@ -154,8 +155,8 @@ import { GithubMetrics, GithubRepo } from '../../models/portfolio.models';
     .avatar-box {
       width: 60px;
       height: 60px;
-      background: rgba(194, 94, 56, 0.1);
-      border: 1px solid var(--border-subtle);
+      background: var(--accent-copper-glow);
+      border: 1px solid var(--border-color);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -163,13 +164,14 @@ import { GithubMetrics, GithubRepo } from '../../models/portfolio.models';
 
       .avatar-icon {
         font-size: 2rem;
-        color: var(--text-primary);
+        color: var(--text-main);
       }
     }
 
     .username {
       font-size: 1.4rem;
       font-weight: 700;
+      color: var(--text-main);
     }
 
     .profile-role {
@@ -209,6 +211,7 @@ import { GithubMetrics, GithubRepo } from '../../models/portfolio.models';
       h4 {
         font-size: 1.15rem;
         font-weight: 600;
+        color: var(--text-main);
         display: flex;
         align-items: center;
         gap: 0.6rem;
@@ -227,6 +230,7 @@ import { GithubMetrics, GithubRepo } from '../../models/portfolio.models';
       flex-direction: column;
       justify-content: space-between;
       background: var(--bg-card);
+      border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
       transition: all 0.25s ease;
     }
@@ -234,6 +238,7 @@ import { GithubMetrics, GithubRepo } from '../../models/portfolio.models';
     .repo-card:hover {
       transform: translateY(-3px);
       border-color: var(--border-hover);
+      box-shadow: var(--shadow-card);
     }
 
     .repo-header {
@@ -244,7 +249,7 @@ import { GithubMetrics, GithubRepo } from '../../models/portfolio.models';
     }
 
     .repo-name {
-      color: var(--text-primary);
+      color: var(--text-main);
       font-weight: 700;
       font-size: 1.05rem;
       text-decoration: none;
@@ -276,7 +281,7 @@ import { GithubMetrics, GithubRepo } from '../../models/portfolio.models';
       align-items: center;
       justify-content: space-between;
       padding-top: 0.75rem;
-      border-top: 1px solid var(--border-subtle);
+      border-top: 1px solid var(--border-color);
       font-size: 0.82rem;
     }
 

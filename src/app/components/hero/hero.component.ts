@@ -112,8 +112,8 @@ import { TranslatePipe } from '@ngx-translate/core';
       align-items: center;
       gap: 0.6rem;
       padding: 0.4rem 1rem;
-      background: rgba(52, 211, 153, 0.1);
-      border: 1px solid rgba(52, 211, 153, 0.25);
+      background: var(--accent-emerald-glow);
+      border: 1px solid var(--accent-emerald);
       border-radius: var(--radius-full);
       font-size: 0.85rem;
       color: var(--accent-emerald);
@@ -126,6 +126,7 @@ import { TranslatePipe } from '@ngx-translate/core';
       font-weight: 800;
       letter-spacing: -0.03em;
       margin-bottom: 0.25rem;
+      color: var(--text-main);
     }
 
     .hero-subtitle {
@@ -147,7 +148,7 @@ import { TranslatePipe } from '@ngx-translate/core';
       max-width: 620px;
 
       strong {
-        color: var(--text-primary);
+        color: var(--text-main);
       }
     }
 
@@ -176,12 +177,13 @@ import { TranslatePipe } from '@ngx-translate/core';
       align-items: center;
       gap: 0.4rem;
       padding: 0.35rem 0.85rem;
-      background: rgba(245, 245, 244, 0.06);
-      border: 1px solid var(--border-subtle);
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
       border-radius: var(--radius-sm);
       font-size: 0.85rem;
       font-weight: 500;
-      color: var(--text-primary);
+      color: var(--text-main);
+      transition: all 0.2s ease;
 
       i {
         font-size: 0.9rem;
@@ -208,16 +210,18 @@ import { TranslatePipe } from '@ngx-translate/core';
     /* Terminal Visual */
     .terminal-card {
       overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.55);
+      box-shadow: var(--shadow-card);
+      background: #1a1d22;
+      border: 1px solid var(--border-color);
     }
 
     .terminal-header {
-      background: rgba(26, 29, 34, 0.95);
+      background: #121417;
       padding: 0.75rem 1.25rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid var(--border-subtle);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .terminal-dots {
@@ -236,7 +240,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 
     .terminal-title {
       font-size: 0.8rem;
-      color: var(--text-muted);
+      color: #94A3B8;
       font-family: var(--font-mono);
     }
 
@@ -244,18 +248,20 @@ import { TranslatePipe } from '@ngx-translate/core';
       padding: 1.5rem;
       font-size: 0.9rem;
       line-height: 1.6;
+      background: #1a1d22;
+      color: #E2E8F0;
 
       .indent-1 {
         padding-left: 1.5rem;
       }
     }
 
-    .code-keyword { color: var(--accent-copper-hover); }
-    .code-variable { color: var(--accent-sand); }
+    .code-keyword { color: #D97706; }
+    .code-variable { color: #F5F5F4; }
     .code-property { color: #d68763; }
-    .code-string { color: #e2e8f0; }
-    .code-prompt { color: var(--accent-copper-hover); font-weight: bold; }
-    .code-cmd { color: var(--text-primary); }
+    .code-string { color: #93c5fd; }
+    .code-prompt { color: #D97706; font-weight: bold; }
+    .code-cmd { color: #E2E8F0; }
 
     .terminal-cursor-line {
       margin-top: 1rem;
@@ -265,7 +271,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     }
 
     .blinking-cursor {
-      color: var(--accent-copper-hover);
+      color: #D97706;
       font-weight: bold;
       animation: blink 1s infinite;
     }

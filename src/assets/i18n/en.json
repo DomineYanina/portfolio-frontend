@@ -7,7 +7,9 @@
     "HABLAR_IA": "Chat with AI",
     "CERRAR_MENU": "Close menu",
     "ABRIR_MENU": "Open menu",
-    "ASISTENTE_IA": "AI Assistant (Gemini)"
+    "ASISTENTE_IA": "AI Assistant (Gemini)",
+    "MODO_CLARO": "Switch to Light Mode",
+    "MODO_OSCURO": "Switch to Dark Mode"
   },
   "HERO": {
     "DISPONIBLE": "Available for new Full Stack opportunities",

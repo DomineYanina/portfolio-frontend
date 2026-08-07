@@ -32,12 +32,12 @@ import { TranslatePipe } from '@ngx-translate/core';
           <div class="footer-col">
             <h4 class="footer-title">{{ 'FOOTER.NAV_TITULO' | translate }}</h4>
             <ul class="footer-links">
-              <li><a href="#hero"><i class="fa-solid fa-angle-right"></i> {{ 'FOOTER.INICIO' | translate }}</a></li>
-              <li><a href="#sobre-mi"><i class="fa-solid fa-angle-right"></i> {{ 'NAV.SOBRE_MI' | translate }}</a></li>
-              <li><a href="#proyectos"><i class="fa-solid fa-angle-right"></i> {{ 'NAV.PROYECTOS' | translate }}</a></li>
-              <li><a href="#educacion"><i class="fa-solid fa-angle-right"></i> {{ 'NAV.EDUCACION' | translate }}</a></li>
-              <li><a href="#metricas"><i class="fa-solid fa-angle-right"></i> {{ 'NAV.METRICAS' | translate }}</a></li>
-              <li><a href="#asistente"><i class="fa-solid fa-angle-right"></i> {{ 'NAV.ASISTENTE_IA' | translate }}</a></li>
+              <li><a href="#hero"><i class="fa-solid fa-angle-right text-copper"></i> {{ 'FOOTER.INICIO' | translate }}</a></li>
+              <li><a href="#sobre-mi"><i class="fa-solid fa-angle-right text-copper"></i> {{ 'NAV.SOBRE_MI' | translate }}</a></li>
+              <li><a href="#proyectos"><i class="fa-solid fa-angle-right text-copper"></i> {{ 'NAV.PROYECTOS' | translate }}</a></li>
+              <li><a href="#educacion"><i class="fa-solid fa-angle-right text-copper"></i> {{ 'NAV.EDUCACION' | translate }}</a></li>
+              <li><a href="#metricas"><i class="fa-solid fa-angle-right text-copper"></i> {{ 'NAV.METRICAS' | translate }}</a></li>
+              <li><a href="#asistente"><i class="fa-solid fa-angle-right text-copper"></i> {{ 'NAV.ASISTENTE_IA' | translate }}</a></li>
             </ul>
           </div>
 
@@ -83,9 +83,10 @@ import { TranslatePipe } from '@ngx-translate/core';
   `,
   styles: [`
     .footer-section {
-      background: #0e1013;
-      border-top: 1px solid var(--border-subtle);
+      background: var(--footer-bg);
+      border-top: 1px solid var(--border-color);
       padding: 4.5rem 0 2rem 0;
+      transition: all 0.3s ease;
     }
 
     .footer-grid {
@@ -99,7 +100,7 @@ import { TranslatePipe } from '@ngx-translate/core';
       font-family: var(--font-mono);
       font-size: 1.35rem;
       font-weight: 700;
-      color: var(--text-primary);
+      color: var(--text-main);
       text-decoration: none;
       display: inline-block;
       margin-bottom: 1rem;
@@ -123,8 +124,8 @@ import { TranslatePipe } from '@ngx-translate/core';
       font-size: 0.78rem;
       color: var(--accent-emerald);
       font-family: var(--font-mono);
-      background: rgba(52, 211, 153, 0.08);
-      border: 1px solid rgba(52, 211, 153, 0.2);
+      background: var(--accent-emerald-glow);
+      border: 1px solid var(--border-color);
       padding: 0.3rem 0.75rem;
       border-radius: var(--radius-full);
     }
@@ -132,7 +133,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     .footer-title {
       font-size: 1rem;
       font-weight: 700;
-      color: var(--text-primary);
+      color: var(--text-main);
       margin-bottom: 1.25rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -155,11 +156,10 @@ import { TranslatePipe } from '@ngx-translate/core';
 
         i {
           font-size: 0.75rem;
-          color: var(--accent-sand);
         }
 
         &:hover {
-          color: var(--text-primary);
+          color: var(--text-main);
           transform: translateX(4px);
         }
       }
@@ -195,10 +195,10 @@ import { TranslatePipe } from '@ngx-translate/core';
     .social-btn {
       width: 40px;
       height: 40px;
-      background: rgba(245, 245, 244, 0.08);
-      border: 1px solid var(--border-subtle);
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
       border-radius: var(--radius-sm);
-      color: var(--text-primary);
+      color: var(--text-main);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -209,13 +209,14 @@ import { TranslatePipe } from '@ngx-translate/core';
       &:hover {
         background: var(--accent-copper);
         border-color: var(--accent-copper);
+        color: #ffffff;
         transform: translateY(-3px);
         box-shadow: 0 4px 12px var(--accent-copper-glow);
       }
     }
 
     .footer-bottom {
-      border-top: 1px solid var(--border-subtle);
+      border-top: 1px solid var(--border-color);
       padding-top: 1.75rem;
       display: flex;
       align-items: center;

@@ -7,7 +7,9 @@
     "HABLAR_IA": "Hablar con IA",
     "CERRAR_MENU": "Cerrar menú",
     "ABRIR_MENU": "Abrir menú",
-    "ASISTENTE_IA": "Asistente IA (Gemini)"
+    "ASISTENTE_IA": "Asistente IA (Gemini)",
+    "MODO_CLARO": "Cambiar a Modo Claro",
+    "MODO_OSCURO": "Cambiar a Modo Oscuro"
   },
   "HERO": {
     "DISPONIBLE": "Disponible para nuevos desafíos Full Stack",

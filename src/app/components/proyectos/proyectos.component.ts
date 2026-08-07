@@ -14,7 +14,7 @@ import { Proyecto } from '../../models/portfolio.models';
         <!-- Section Header -->
         <div class="section-header">
           <span class="section-tag">
-            <i class="fa-solid fa-code-commit"></i> {{ 'PROYECTOS.TAG' | translate }}
+            <i class="fa-solid fa-code-commit text-copper"></i> {{ 'PROYECTOS.TAG' | translate }}
           </span>
           <h2 class="section-title">
             {{ 'PROYECTOS.TITULO' | translate }} <span class="text-gradient">{{ 'PROYECTOS.TITULO_HIGHLIGHT' | translate }}</span>
@@ -143,7 +143,7 @@ import { Proyecto } from '../../models/portfolio.models';
       flex-direction: column;
       padding: 2rem;
       background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -151,12 +151,12 @@ import { Proyecto } from '../../models/portfolio.models';
     .project-card:hover {
       transform: translateY(-4px);
       border-color: var(--border-hover);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+      box-shadow: var(--shadow-card);
     }
 
     .project-card.featured {
-      border: 1px solid rgba(194, 94, 56, 0.4);
-      background: linear-gradient(180deg, rgba(32, 36, 42, 0.9) 0%, rgba(18, 20, 23, 0.95) 100%);
+      border: 1px solid var(--accent-copper);
+      background: var(--bg-card);
     }
 
     .card-featured-badge {
@@ -185,8 +185,8 @@ import { Proyecto } from '../../models/portfolio.models';
     .icon-wrapper {
       width: 48px;
       height: 48px;
-      background: rgba(194, 94, 56, 0.12);
-      border: 1px solid rgba(194, 94, 56, 0.3);
+      background: var(--accent-copper-glow);
+      border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
       display: flex;
       align-items: center;
@@ -200,10 +200,11 @@ import { Proyecto } from '../../models/portfolio.models';
       font-size: 1.4rem;
       font-weight: 700;
       margin-bottom: 0.25rem;
+      color: var(--text-main);
     }
 
     .project-summary {
-      color: var(--accent-sand);
+      color: var(--text-secondary);
       font-size: 0.88rem;
       font-weight: 500;
     }
@@ -230,8 +231,8 @@ import { Proyecto } from '../../models/portfolio.models';
     }
 
     .tech-chip {
-      background: rgba(245, 245, 244, 0.06);
-      border: 1px solid var(--border-subtle);
+      background: var(--btn-secondary-bg);
+      border: 1px solid var(--border-color);
       color: var(--text-secondary);
       font-size: 0.78rem;
       font-family: var(--font-mono);
@@ -243,7 +244,7 @@ import { Proyecto } from '../../models/portfolio.models';
       display: flex;
       gap: 0.75rem;
       padding-top: 1.25rem;
-      border-top: 1px solid var(--border-subtle);
+      border-top: 1px solid var(--border-color);
     }
 
     .flex-1 {

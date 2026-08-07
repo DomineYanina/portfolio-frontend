@@ -46,8 +46,8 @@ import { Educacion } from '../../models/portfolio.models';
                   <h3 class="degree-title">
                     {{ item.key ? ('EDUCATION.' + item.key + '.TITLE' | translate) : item.titulo }}
                   </h3>
-                  <h4 class="institution-name text-sand">
-                    <i class="fa-solid fa-location-dot"></i>
+                  <h4 class="institution-name">
+                    <i class="fa-solid fa-location-dot text-copper"></i>
                     {{ item.key ? ('EDUCATION.' + item.key + '.INSTITUTION' | translate) : item.institucion }}
                   </h4>
                 </div>
@@ -119,7 +119,7 @@ import { Educacion } from '../../models/portfolio.models';
       padding: 2rem;
       position: relative;
       background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       width: 100%;
@@ -129,14 +129,14 @@ import { Educacion } from '../../models/portfolio.models';
     .timeline-item:hover {
       transform: translateY(-3px);
       border-color: var(--border-hover);
-      box-shadow: 0 12px 30px rgba(194, 94, 56, 0.15);
+      box-shadow: var(--shadow-card);
     }
 
     .timeline-icon-box {
       width: 54px;
       height: 54px;
-      background: linear-gradient(135deg, rgba(194, 94, 56, 0.2) 0%, rgba(245, 245, 244, 0.08) 100%);
-      border: 1px solid rgba(194, 94, 56, 0.35);
+      background: var(--accent-copper-glow);
+      border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
       display: flex;
       align-items: center;
@@ -168,13 +168,14 @@ import { Educacion } from '../../models/portfolio.models';
     .degree-title {
       font-size: 1.35rem;
       font-weight: 700;
-      color: var(--text-primary);
+      color: var(--text-main);
       margin-bottom: 0.35rem;
     }
 
     .institution-name {
       font-size: 0.95rem;
       font-weight: 500;
+      color: var(--text-secondary);
       display: flex;
       align-items: center;
       gap: 0.4rem;
@@ -186,8 +187,8 @@ import { Educacion } from '../../models/portfolio.models';
     }
 
     .period-badge {
-      background: rgba(194, 94, 56, 0.12);
-      border: 1px solid rgba(194, 94, 56, 0.3);
+      background: var(--accent-copper-glow);
+      border: 1px solid var(--border-color);
       color: var(--accent-copper-hover);
       font-size: 0.82rem;
       padding: 0.35rem 0.85rem;
@@ -216,8 +217,8 @@ import { Educacion } from '../../models/portfolio.models';
     }
 
     .highlight-chip {
-      background: rgba(245, 245, 244, 0.05);
-      border: 1px solid var(--border-subtle);
+      background: var(--btn-secondary-bg);
+      border: 1px solid var(--border-color);
       color: var(--text-secondary);
       font-size: 0.8rem;
       padding: 0.25rem 0.65rem;

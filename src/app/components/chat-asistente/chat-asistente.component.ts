@@ -52,7 +52,7 @@ import { ChatMessage } from '../../models/portfolio.models';
 
           <!-- Quick Suggestion Buttons for Recruiters -->
           <div class="quick-suggestions-bar">
-            <span class="suggestions-label"><i class="fa-solid fa-lightbulb"></i> {{ 'CHAT.PREGUNTAS_RAPIDAS' | translate }}</span>
+            <span class="suggestions-label"><i class="fa-solid fa-lightbulb text-copper"></i> {{ 'CHAT.PREGUNTAS_RAPIDAS' | translate }}</span>
             <div class="suggestions-chips">
               <button
                 *ngFor="let s of sugerencias"
@@ -140,8 +140,8 @@ import { ChatMessage } from '../../models/portfolio.models';
     }
 
     .glow-tag {
-      background: rgba(194, 94, 56, 0.12);
-      border-color: rgba(194, 94, 56, 0.3);
+      background: var(--accent-copper-glow);
+      border-color: var(--border-color);
       color: var(--accent-copper-hover);
     }
 
@@ -152,7 +152,7 @@ import { ChatMessage } from '../../models/portfolio.models';
       flex-direction: column;
       height: 650px;
       overflow: hidden;
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--border-color);
       box-shadow: var(--shadow-glow);
       background: var(--bg-card);
       border-radius: var(--radius-lg);
@@ -161,8 +161,8 @@ import { ChatMessage } from '../../models/portfolio.models';
     /* Header Bar */
     .chat-header-bar {
       padding: 1.25rem 1.75rem;
-      background: rgba(26, 29, 34, 0.95);
-      border-bottom: 1px solid var(--border-subtle);
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-color);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -177,8 +177,8 @@ import { ChatMessage } from '../../models/portfolio.models';
     .ai-avatar {
       width: 44px;
       height: 44px;
-      background: linear-gradient(135deg, rgba(194, 94, 56, 0.25) 0%, rgba(245, 245, 244, 0.12) 100%);
-      border: 1px solid rgba(194, 94, 56, 0.4);
+      background: var(--accent-copper-glow);
+      border: 1px solid var(--border-color);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -190,6 +190,7 @@ import { ChatMessage } from '../../models/portfolio.models';
     .ai-title {
       font-size: 1.05rem;
       font-weight: 700;
+      color: var(--text-main);
     }
 
     .connection-status {
@@ -201,8 +202,8 @@ import { ChatMessage } from '../../models/portfolio.models';
     }
 
     .btn-clear {
-      background: transparent;
-      border: 1px solid var(--border-subtle);
+      background: var(--btn-secondary-bg);
+      border: 1px solid var(--border-color);
       color: var(--text-secondary);
       width: 36px;
       height: 36px;
@@ -214,16 +215,16 @@ import { ChatMessage } from '../../models/portfolio.models';
       transition: all 0.2s ease;
 
       &:hover {
-        color: var(--text-primary);
-        background: rgba(245, 245, 244, 0.08);
+        color: var(--text-main);
+        background: var(--btn-secondary-hover);
       }
     }
 
     /* Quick Suggestions */
     .quick-suggestions-bar {
       padding: 0.75rem 1.5rem;
-      background: rgba(18, 20, 23, 0.6);
-      border-bottom: 1px solid var(--border-subtle);
+      background: var(--bg-main);
+      border-bottom: 1px solid var(--border-color);
       display: flex;
       align-items: center;
       gap: 1rem;
@@ -243,8 +244,8 @@ import { ChatMessage } from '../../models/portfolio.models';
     }
 
     .chip-btn {
-      background: rgba(245, 245, 244, 0.06);
-      border: 1px solid var(--border-subtle);
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
       color: var(--text-secondary);
       font-size: 0.8rem;
       padding: 0.3rem 0.75rem;
@@ -255,7 +256,7 @@ import { ChatMessage } from '../../models/portfolio.models';
 
       &:hover:not(:disabled) {
         border-color: var(--accent-copper-hover);
-        color: var(--text-primary);
+        color: var(--text-main);
         background: var(--accent-copper-glow);
       }
 
@@ -273,7 +274,7 @@ import { ChatMessage } from '../../models/portfolio.models';
       display: flex;
       flex-direction: column;
       gap: 1.25rem;
-      background: rgba(18, 20, 23, 0.4);
+      background: var(--bg-main);
     }
 
     .message-wrapper {
@@ -295,8 +296,8 @@ import { ChatMessage } from '../../models/portfolio.models';
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      background: rgba(245, 245, 244, 0.08);
-      border: 1px solid var(--border-subtle);
+      background: var(--btn-secondary-bg);
+      border: 1px solid var(--border-color);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -311,9 +312,9 @@ import { ChatMessage } from '../../models/portfolio.models';
     }
 
     .message-wrapper.assistant .message-bubble {
-      background: rgba(26, 29, 34, 0.95);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-primary);
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
       border-top-left-radius: 2px;
     }
 
@@ -331,16 +332,16 @@ import { ChatMessage } from '../../models/portfolio.models';
     }
 
     .message-wrapper.user .message-sender-name {
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(255, 255, 255, 0.85);
       text-align: right;
     }
 
-    /* Markdown Body Styling - Cobre & Gris Perla */
+    /* Markdown Body Styling */
     .markdown-body {
-      color: #E2E8F0;
+      color: var(--text-main);
       font-size: 0.95rem;
       line-height: 1.6;
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-family: var(--font-sans);
     }
     .markdown-body p {
       margin-bottom: 0.75rem;
@@ -359,9 +360,12 @@ import { ChatMessage } from '../../models/portfolio.models';
     }
     .markdown-body li {
       margin-bottom: 0.5rem;
-      color: #94A3B8;
+      color: var(--text-secondary);
     }
 
+    .message-wrapper.user .markdown-body {
+      color: #ffffff;
+    }
     .message-wrapper.user .markdown-body strong {
       color: #ffffff;
     }
@@ -415,8 +419,8 @@ import { ChatMessage } from '../../models/portfolio.models';
     /* Input Bar */
     .chat-input-container {
       padding: 1.25rem 1.5rem;
-      background: rgba(26, 29, 34, 0.95);
-      border-top: 1px solid var(--border-subtle);
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border-color);
     }
 
     .chat-form {
@@ -426,11 +430,11 @@ import { ChatMessage } from '../../models/portfolio.models';
 
     .chat-input {
       flex: 1;
-      background: rgba(18, 20, 23, 0.8);
-      border: 1px solid var(--border-subtle);
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
       padding: 0.75rem 1.25rem;
-      color: var(--text-primary);
+      color: var(--text-main);
       font-size: 0.95rem;
       font-family: var(--font-sans);
       outline: none;
