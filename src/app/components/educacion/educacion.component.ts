@@ -1,31 +1,32 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslatePipe } from '@ngx-translate/core';
 import { PortfolioService } from '../../services/portfolio.service';
 import { Educacion } from '../../models/portfolio.models';
 
 @Component({
   selector: 'app-educacion',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslatePipe],
   template: `
     <section id="educacion" class="section-padding educacion-section">
       <div class="container">
         <!-- Section Header -->
         <div class="section-header">
           <span class="section-tag">
-            <i class="fa-solid fa-graduation-cap text-copper"></i> Trayectoria & Estudios
+            <i class="fa-solid fa-graduation-cap text-copper"></i> {{ 'EDUCACION.TAG' | translate }}
           </span>
           <h2 class="section-title">
-            Formación <span class="text-gradient">Académica</span>
+            {{ 'EDUCACION.TITULO' | translate }} <span class="text-gradient">{{ 'EDUCACION.TITULO_HIGHLIGHT' | translate }}</span>
           </h2>
         </div>
 
         <!-- Loading State -->
         <div *ngIf="cargando()" class="loading-container">
           <div class="spinner"></div>
-          <p class="text-mono">Cargando formación académica desde el servidor backend...</p>
+          <p class="text-mono">{{ 'EDUCACION.CARGANDO' | translate }}</p>
           <small class="text-muted" style="display: block; margin-top: 0.5rem;">
-            (Conectando con el servidor en la nube)
+            {{ 'EDUCACION.CARGANDO_AVISO' | translate }}
           </small>
         </div>
 
@@ -42,9 +43,12 @@ import { Educacion } from '../../models/portfolio.models';
             <div class="timeline-content">
               <div class="content-header">
                 <div class="institution-meta">
-                  <h3 class="degree-title">{{ item.titulo }}</h3>
+                  <h3 class="degree-title">
+                    {{ item.key ? ('EDUCATION.' + item.key + '.TITLE' | translate) : item.titulo }}
+                  </h3>
                   <h4 class="institution-name text-sand">
-                    <i class="fa-solid fa-location-dot"></i> {{ item.institucion }}
+                    <i class="fa-solid fa-location-dot"></i>
+                    {{ item.key ? ('EDUCATION.' + item.key + '.INSTITUTION' | translate) : item.institucion }}
                   </h4>
                 </div>
                 <div class="period-badge text-mono">
@@ -53,14 +57,14 @@ import { Educacion } from '../../models/portfolio.models';
               </div>
 
               <p class="education-desc">
-                {{ item.descripcion }}
+                {{ item.key ? ('EDUCATION.' + item.key + '.DESC' | translate) : item.descripcion }}
               </p>
 
               <div class="education-highlights">
-                <span class="highlight-chip"><i class="fa-solid fa-check"></i> Desarrollo Web Full Stack</span>
-                <span class="highlight-chip"><i class="fa-solid fa-check"></i> Programación Orientada a Objetos</span>
-                <span class="highlight-chip"><i class="fa-solid fa-check"></i> Bases de Datos Relacionales</span>
-                <span class="highlight-chip"><i class="fa-solid fa-check"></i> Metodologías Ágiles</span>
+                <span class="highlight-chip"><i class="fa-solid fa-check"></i> {{ 'EDUCACION.CHIP_FULLSTACK' | translate }}</span>
+                <span class="highlight-chip"><i class="fa-solid fa-check"></i> {{ 'EDUCACION.CHIP_POO' | translate }}</span>
+                <span class="highlight-chip"><i class="fa-solid fa-check"></i> {{ 'EDUCACION.CHIP_BD' | translate }}</span>
+                <span class="highlight-chip"><i class="fa-solid fa-check"></i> {{ 'EDUCACION.CHIP_AGILE' | translate }}</span>
               </div>
             </div>
 
@@ -70,7 +74,7 @@ import { Educacion } from '../../models/portfolio.models';
         <!-- Empty State -->
         <div *ngIf="!cargando() && educacionList().length === 0" class="empty-state glass-panel">
           <i class="fa-solid fa-graduation-cap empty-icon"></i>
-          <p>No se registraron datos de formación académica.</p>
+          <p>{{ 'EDUCACION.SIN_DATOS' | translate }}</p>
         </div>
       </div>
     </section>

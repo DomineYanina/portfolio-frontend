@@ -1,7 +1,9 @@
-import { Component, ElementRef, ViewChild, inject, signal } from '@angular/core';
+import { Component, ElementRef, ViewChild, inject, signal, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
 import { marked } from 'marked';
 import { PortfolioService } from '../../services/portfolio.service';
 import { ChatMessage } from '../../models/portfolio.models';
@@ -9,20 +11,20 @@ import { ChatMessage } from '../../models/portfolio.models';
 @Component({
   selector: 'app-chat-asistente',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslatePipe],
   template: `
     <section id="asistente" class="section-padding chat-section">
       <div class="container">
         <!-- Section Header -->
         <div class="section-header">
           <span class="section-tag glow-tag">
-            <i class="fa-solid fa-brain text-copper"></i> Asistente Virtual Gemini
+            <i class="fa-solid fa-brain text-copper"></i> {{ 'CHAT.TAG' | translate }}
           </span>
           <h2 class="section-title">
-            Asistente con <span class="text-gradient">Inteligencia Artificial</span>
+            {{ 'CHAT.TITULO' | translate }} <span class="text-gradient">{{ 'CHAT.TITULO_HIGHLIGHT' | translate }}</span>
           </h2>
           <p class="section-subtitle">
-            ¿Eres reclutador o líder técnico? Hacele cualquier pregunta a la IA sobre la experiencia, proyectos y stack de Yanina.
+            {{ 'CHAT.SUBTITLE' | translate }}
           </p>
         </div>
 
@@ -35,22 +37,22 @@ import { ChatMessage } from '../../models/portfolio.models';
                 <i class="fa-solid fa-robot"></i>
               </div>
               <div class="ai-info">
-                <h4 class="ai-title">Gemini Assistant (Spring Boot AI API)</h4>
+                <h4 class="ai-title">{{ 'CHAT.HEADER_TITLE' | translate }}</h4>
                 <div class="connection-status">
                   <span class="status-dot"></span>
-                  <span>Conectado</span>
+                  <span>{{ 'CHAT.ESTADO_CONECTADO' | translate }}</span>
                 </div>
               </div>
             </div>
 
-            <button class="btn-clear" (click)="reiniciarChat()" title="Reiniciar conversación">
+            <button class="btn-clear" (click)="reiniciarChat()" [attr.title]="'CHAT.REINICIAR_TOOLTIP' | translate">
               <i class="fa-solid fa-rotate-right"></i>
             </button>
           </div>
 
           <!-- Quick Suggestion Buttons for Recruiters -->
           <div class="quick-suggestions-bar">
-            <span class="suggestions-label"><i class="fa-solid fa-lightbulb"></i> Preguntas rápidas:</span>
+            <span class="suggestions-label"><i class="fa-solid fa-lightbulb"></i> {{ 'CHAT.PREGUNTAS_RAPIDAS' | translate }}</span>
             <div class="suggestions-chips">
               <button
                 *ngFor="let s of sugerencias"
@@ -78,7 +80,7 @@ import { ChatMessage } from '../../models/portfolio.models';
               <!-- Message Content Bubble -->
               <div class="message-bubble">
                 <div class="message-sender-name">
-                  {{ msg.sender === 'assistant' ? 'Asistente de Yanina' : 'Tú (Reclutador)' }}
+                  {{ msg.sender === 'assistant' ? ('CHAT.SENDER_BOT' | translate) : ('CHAT.SENDER_USER' | translate) }}
                 </div>
                 
                 <!-- Rendered Markdown HTML Container -->
@@ -96,7 +98,7 @@ import { ChatMessage } from '../../models/portfolio.models';
                 <i class="fa-solid fa-robot text-copper"></i>
               </div>
               <div class="message-bubble typing-bubble">
-                <span class="typing-text">IA escribiendo</span>
+                <span class="typing-text">{{ 'CHAT.CARGANDO_BOT' | translate }}</span>
                 <div class="typing-dots">
                   <span></span>
                   <span></span>
@@ -113,7 +115,7 @@ import { ChatMessage } from '../../models/portfolio.models';
                 type="text"
                 [(ngModel)]="nuevaPregunta"
                 name="nuevaPregunta"
-                placeholder="Escribe tu pregunta aquí (ej. ¿Qué proyectos ha desarrollado con Spring Boot y Angular?)..."
+                [placeholder]="'CHAT.PLACEHOLDER_INPUT' | translate"
                 [disabled]="cargando()"
                 class="chat-input"
                 autocomplete="off" />
@@ -123,7 +125,7 @@ import { ChatMessage } from '../../models/portfolio.models';
                 [disabled]="!nuevaPregunta.trim() || cargando()"
                 class="btn btn-primary btn-send">
                 <i class="fa-solid fa-paper-plane"></i>
-                <span>Enviar</span>
+                <span>{{ 'CHAT.BOTON_ENVIAR' | translate }}</span>
               </button>
             </form>
           </div>
@@ -458,31 +460,63 @@ import { ChatMessage } from '../../models/portfolio.models';
     }
   `]
 })
-export class ChatAsistenteComponent {
+export class ChatAsistenteComponent implements OnInit, OnDestroy {
   private readonly portfolioService = inject(PortfolioService);
+  private readonly translate = inject(TranslateService);
+  private langSub!: Subscription;
 
   @ViewChild('chatMessagesContainer') private chatContainer!: ElementRef;
 
   nuevaPregunta = '';
   cargando = signal<boolean>(false);
 
-  sugerencias: string[] = [
-    '¿Cuál es la experiencia de Yanina?',
-    '¿Qué tecnologías maneja en backend y frontend?',
-    '¿Qué características tiene el proyecto RECRED?',
-    '¿Cómo puedo contactarla para una entrevista?'
-  ];
+  sugerencias: string[] = [];
 
-  historialmensajes = signal<ChatMessage[]>([
-    {
-      id: '1',
-      sender: 'assistant',
-      text: '¡Hola! Soy el asistente virtual inteligente de **Yanina Dominé**. Estoy configurado para responder cualquier consulta sobre sus proyectos en **Spring Boot**, **Angular 17+**, **Supabase** y su trayectoria profesional. ¿En qué puedo ayudarte hoy?',
-      timestamp: new Date()
-    }
-  ]);
+  historialmensajes = signal<ChatMessage[]>([]);
 
   constructor(private sanitizer: DomSanitizer) { }
+
+  ngOnInit(): void {
+    this.cargarTextosTraducidos();
+    this.langSub = this.translate.onLangChange.subscribe(() => {
+      this.cargarTextosTraducidos();
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.langSub) {
+      this.langSub.unsubscribe();
+    }
+  }
+
+  private cargarTextosTraducidos(): void {
+    this.translate.get([
+      'CHAT.SUGERENCIA_1',
+      'CHAT.SUGERENCIA_2',
+      'CHAT.SUGERENCIA_3',
+      'CHAT.SUGERENCIA_4',
+      'CHAT.MENSAJE_INICIAL'
+    ]).subscribe(res => {
+      this.sugerencias = [
+        res['CHAT.SUGERENCIA_1'],
+        res['CHAT.SUGERENCIA_2'],
+        res['CHAT.SUGERENCIA_3'],
+        res['CHAT.SUGERENCIA_4']
+      ];
+
+      const currentMsgs = this.historialmensajes();
+      if (currentMsgs.length === 0 || (currentMsgs.length === 1 && currentMsgs[0].sender === 'assistant')) {
+        this.historialmensajes.set([
+          {
+            id: '1',
+            sender: 'assistant',
+            text: res['CHAT.MENSAJE_INICIAL'],
+            timestamp: new Date()
+          }
+        ]);
+      }
+    });
+  }
 
   renderMarkdown(texto: string): SafeHtml {
     if (!texto) return '';
@@ -507,8 +541,14 @@ export class ChatAsistenteComponent {
     this.cargando.set(true);
     this.scrollToBottom();
 
+    // Obtener idioma activo del TranslateService (signal en ngx-translate v18)
+    const rawLang = typeof this.translate.currentLang === 'function' 
+      ? this.translate.currentLang() 
+      : (this.translate.currentLang as unknown as string);
+    const currentLang = rawLang || 'es';
+
     // Consumir el endpoint POST http://localhost:8080/api/portfolio/chat/preguntar
-    this.portfolioService.preguntarChat(texto).subscribe({
+    this.portfolioService.preguntarChat(texto, currentLang).subscribe({
       next: (res) => {
         const assistantMsg: ChatMessage = {
           id: (Date.now() + 1).toString(),
@@ -522,10 +562,11 @@ export class ChatAsistenteComponent {
       },
       error: (err) => {
         console.error('Error al consultar chat:', err);
+        const errorText = this.translate.instant('CHAT.MENSAJE_ERROR');
         const errorMsg: ChatMessage = {
           id: (Date.now() + 1).toString(),
           sender: 'assistant',
-          text: 'El servidor backend en la nube se está activando o experimenta latencia. Por favor intenta realizar tu pregunta nuevamente en unos instantes.',
+          text: errorText,
           timestamp: new Date()
         };
         this.historialmensajes.update(prev => [...prev, errorMsg]);
@@ -541,14 +582,16 @@ export class ChatAsistenteComponent {
   }
 
   reiniciarChat() {
-    this.historialmensajes.set([
-      {
-        id: Date.now().toString(),
-        sender: 'assistant',
-        text: 'Conversación reiniciada. ¿Qué otra duda tienes sobre el perfil de **Yanina**?',
-        timestamp: new Date()
-      }
-    ]);
+    this.translate.get('CHAT.MENSAJE_REINICIADO').subscribe(text => {
+      this.historialmensajes.set([
+        {
+          id: Date.now().toString(),
+          sender: 'assistant',
+          text: text,
+          timestamp: new Date()
+        }
+      ]);
+    });
   }
 
   private scrollToBottom(): void {

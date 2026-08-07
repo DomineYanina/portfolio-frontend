@@ -1,0 +1,183 @@
+{
+  "NAV": {
+    "SOBRE_MI": "Sobre mí",
+    "PROYECTOS": "Proyectos",
+    "EDUCACION": "Educación",
+    "METRICAS": "Métricas GitHub",
+    "HABLAR_IA": "Hablar con IA",
+    "CERRAR_MENU": "Cerrar menú",
+    "ABRIR_MENU": "Abrir menú",
+    "ASISTENTE_IA": "Asistente IA (Gemini)"
+  },
+  "HERO": {
+    "DISPONIBLE": "Disponible para nuevos desafíos Full Stack",
+    "SALUDO": "Hola, soy",
+    "ROL": "Desarrolladora",
+    "ROL_HIGHLIGHT": "Full Stack",
+    "BIO": "Especializada en el diseño y construcción de arquitecturas backend escalables con <strong>Java 17 & Spring Boot</strong>, desplegables en <strong>Docker & AWS</strong>, combinadas con interfaces web reactivas y modernas en <strong>Angular 17+</strong>, <strong>TypeScript/JavaScript</strong> y <strong>Supabase</strong>.",
+    "STACK_LABEL": "Stack Principal:",
+    "CTA_PROYECTOS": "Ver Proyectos",
+    "CTA_ASISTENTE": "Probar Asistente IA",
+    "CTA_GITHUB": "GitHub"
+  },
+  "CODE_SNIPPET": {
+    "NOMBRE_KEY": "nombre",
+    "NOMBRE_VAL": "Yanina Dominé",
+    "ROL_KEY": "rol",
+    "ROL_VAL": "Desarrolladora Full Stack",
+    "PROYECTOS_KEY": "proyectosDestacados",
+    "PROYECTO_1": "RECRED",
+    "PROYECTO_2": "Invitación Digital",
+    "ESTADO_KEY": "estado",
+    "ESTADO_VAL": "Lista para producción 🚀"
+  },
+  "PROYECTOS": {
+    "TAG": "Portafolio Destacado",
+    "TITULO": "Proyectos",
+    "TITULO_HIGHLIGHT": "Recientes",
+    "SUBTITULO": "Explora las soluciones de software desarrolladas con arquitectura sólida en Spring Boot y Angular.",
+    "CARGANDO": "Cargando proyectos desde el servidor backend...",
+    "CARGANDO_AVISO": "(Si el servidor de la nube estaba suspendido, la respuesta inicial puede tomar unos segundos)",
+    "SIN_PROYECTOS": "No se encontraron proyectos disponibles.",
+    "DESTACADO": "Destacado",
+    "REPOSITORIO": "Repositorio",
+    "VER_DEMO": "Ver Demo / API"
+  },
+  "PROJECTS": {
+    "recred": {
+      "TITLE": "RECRED",
+      "SUMMARY": "Plataforma de gestión de acreditaciones y créditos académicos.",
+      "DESC": "Sistema web robusto diseñado para la administración integral de acreditaciones, créditos y certificados académicos. Desarrollado con backend modular en Java 17 / Spring Boot, arquitectura RESTful, persistencia con PostgreSQL / Supabase, e interfaz reactiva construida en Angular."
+    },
+    "RECRED": {
+      "TITLE": "RECRED",
+      "SUMMARY": "Plataforma de gestión de acreditaciones y créditos académicos.",
+      "DESC": "Sistema web robusto diseñado para la administración integral de acreditaciones, créditos y certificados académicos. Desarrollado con backend modular en Java 17 / Spring Boot, arquitectura RESTful, persistencia con PostgreSQL / Supabase, e interfaz reactiva construida en Angular."
+    },
+    "invitacion": {
+      "TITLE": "Invitación Digital",
+      "SUMMARY": "Plataforma interactiva para la creación y gestión de eventos sociales.",
+      "DESC": "Aplicación web dinámica para invitaciones digitales personalizables con confirmación de asistencia (RSVP) en tiempo real, integración de mapa de ubicación, cuenta regresiva, galería interactiva y reproductor de música."
+    },
+    "INVITACION": {
+      "TITLE": "Invitación Digital",
+      "SUMMARY": "Plataforma interactiva para la creación y gestión de eventos sociales.",
+      "DESC": "Aplicación web dinámica para invitaciones digitales personalizables con confirmación de asistencia (RSVP) en tiempo real, integración de mapa de ubicación, cuenta regresiva, galería interactiva y reproductor de música."
+    },
+    "portfolio-backend": {
+      "TITLE": "Portfolio API Backend",
+      "SUMMARY": "Microservicio en Spring Boot con integración de IA (Gemini API).",
+      "DESC": "Backend de arquitectura limpia en Java 17 y Spring Boot que provee los endpoints para métricas de GitHub, administración de proyectos e integración con la API de Google Gemini para respuesta automatizada a reclutadores."
+    },
+    "PORTFOLIO-BACKEND": {
+      "TITLE": "Portfolio API Backend",
+      "SUMMARY": "Microservicio en Spring Boot con integración de IA (Gemini API).",
+      "DESC": "Backend de arquitectura limpia en Java 17 y Spring Boot que provee los endpoints para métricas de GitHub, administración de proyectos e integración con la API de Google Gemini para respuesta automatizada a reclutadores."
+    }
+  },
+  "EDUCACION": {
+    "TAG": "Trayectoria & Estudios",
+    "TITULO": "Formación",
+    "TITULO_HIGHLIGHT": "Académica",
+    "CARGANDO": "Cargando formación académica desde el servidor backend...",
+    "CARGANDO_AVISO": "(Conectando con el servidor en la nube)",
+    "SIN_DATOS": "No se registraron datos de formación académica.",
+    "CHIP_FULLSTACK": "Desarrollo Web Full Stack",
+    "CHIP_POO": "Programación Orientada a Objetos",
+    "CHIP_BD": "Bases de Datos Relacionales",
+    "CHIP_AGILE": "Metodologías Ágiles",
+    "unlam": {
+      "TITLE": "Tecnicatura Universitaria en Desarrollo Web",
+      "INSTITUTION": "Universidad Nacional de La Matanza (UNLaM)",
+      "PERIOD": "2021 - 2026",
+      "DESC": "Formación superior enfocada en desarrollo web, bases de datos relacionales, programación orientada a objetos y metodologías ágiles."
+    },
+    "UNLAM": {
+      "TITLE": "Tecnicatura Universitaria en Desarrollo Web",
+      "INSTITUTION": "Universidad Nacional de La Matanza (UNLaM)",
+      "PERIOD": "2021 - 2026",
+      "DESC": "Formación superior enfocada en desarrollo web, bases de datos relacionales, programación orientada a objetos y metodologías ágiles."
+    }
+  },
+  "EDUCATION": {
+    "TAG": "Trayectoria & Estudios",
+    "TITLE": "Formación",
+    "TITLE_HIGHLIGHT": "Académica",
+    "LOADING": "Cargando formación académica desde el servidor backend...",
+    "LOADING_NOTICE": "(Conectando con el servidor en la nube)",
+    "EMPTY": "No se registraron datos de formación académica.",
+    "unlam": {
+      "TITLE": "Tecnicatura Universitaria en Desarrollo Web",
+      "INSTITUTION": "Universidad Nacional de La Matanza (UNLaM)",
+      "PERIOD": "2021 - 2026",
+      "DESC": "Formación superior enfocada en desarrollo web, bases de datos relacionales, programación orientada a objetos y metodologías ágiles."
+    },
+    "UNLAM": {
+      "TITLE": "Tecnicatura Universitaria en Desarrollo Web",
+      "INSTITUTION": "Universidad Nacional de La Matanza (UNLaM)",
+      "PERIOD": "2021 - 2026",
+      "DESC": "Formación superior enfocada en desarrollo web, bases de datos relacionales, programación orientada a objetos y metodologías ágiles."
+    }
+  },
+  "GITHUB": {
+    "TAG": "Integración Backend API",
+    "TITLE": "Métricas de",
+    "TITLE_HIGHLIGHT": "GitHub",
+    "SUBTITLE": "Estadísticas en tiempo real sincronizadas a través del microservicio Spring Boot con la API REST de GitHub.",
+    "LOADING": "Obteniendo métricas sincronizadas de GitHub...",
+    "PROFILE_ROLE": "Desarrolladora Full Stack | Open Source",
+    "REPOS_PUBLISHED": "Repos Publicados",
+    "STARS_RECEIVED": "Estrellas Recibidas",
+    "VIEW_PROFILE": "Ver Perfil Oficial",
+    "FEATURED_REPOS": "Repositorios Destacados Recientes",
+    "EXPLORE": "Explorar"
+  },
+  "GITHUB_REPOS": {
+    "RECRED": {
+      "DESC": "Sistema de Acreditaciones y Gestión de Créditos Académicos (Spring Boot + Angular)."
+    },
+    "INVITACION_DIGITAL": {
+      "DESC": "Plataforma interactiva de invitaciones con confirmación RSVP en tiempo real."
+    },
+    "PORTFOLIO_BACKEND": {
+      "DESC": "REST API en Spring Boot con integración de Gemini AI y métricas de GitHub."
+    },
+    "PORTFOLIO_FRONTEND": {
+      "DESC": "Aplicación Angular 17+ Standalone con diseño Developer Dark Mode e i18n."
+    }
+  },
+  "CHAT": {
+    "TAG": "Asistente Virtual Gemini",
+    "TITULO": "Asistente con",
+    "TITULO_HIGHLIGHT": "Inteligencia Artificial",
+    "SUBTITULO": "¿Eres reclutador o líder técnico? Hazle cualquier pregunta libre a la IA sobre la experiencia, proyectos y stack de Yanina.",
+    "SUBTITLE": "¿Eres reclutador o líder técnico? Hazle cualquier pregunta libre a la IA sobre la experiencia, proyectos y stack de Yanina.",
+    "HEADER_TITLE": "Gemini Assistant (Spring Boot AI API)",
+    "ESTADO_CONECTADO": "Conectado",
+    "REINICIAR_TOOLTIP": "Reiniciar conversación",
+    "PREGUNTAS_RAPIDAS": "Preguntas rápidas:",
+    "SENDER_BOT": "Asistente de Yanina",
+    "SENDER_USER": "Tú (Reclutador)",
+    "CARGANDO_BOT": "IA escribiendo",
+    "PLACEHOLDER_INPUT": "Escribe tu pregunta aquí (ej. ¿Qué proyectos ha desarrollado con Spring Boot y Angular?)...",
+    "BOTON_ENVIAR": "Enviar",
+    "MENSAJE_INICIAL": "¡Hola! Soy el asistente virtual inteligente de **Yanina Dominé**. Estoy configurado para responder cualquier consulta sobre sus proyectos en **Spring Boot**, **Angular 17+**, **Supabase** y su trayectoria profesional. ¿En qué puedo ayudarte hoy?",
+    "MENSAJE_REINICIADO": "Conversación reiniciada. ¿Qué otra duda tienes sobre el perfil de **Yanina**?",
+    "MENSAJE_ERROR": "El servidor backend en la nube se está activando o experimenta latencia. Por favor intenta realizar tu pregunta nuevamente en unos instantes.",
+    "SUGERENCIA_1": "¿Cuál es la experiencia de Yanina?",
+    "SUGERENCIA_2": "¿Qué tecnologías maneja en backend y frontend?",
+    "SUGERENCIA_3": "¿Qué características tiene el proyecto RECRED?",
+    "SUGERENCIA_4": "¿Cómo puedo contactarla para una entrevista?"
+  },
+  "FOOTER": {
+    "BIO": "Desarrolladora Full Stack apasionada por la ingeniería de software limpia, arquitecturas en Java 17 / Spring Boot e interfaces dinámicas en Angular.",
+    "BACKEND_ACTIVE": "Spring Boot Backend Active",
+    "NAV_TITULO": "Navegación",
+    "TECH_TITULO": "Tecnologías",
+    "CONNECT_TITULO": "Conectar",
+    "CONNECT_DESC": "¿Interesado/a en trabajar juntos?",
+    "INICIO": "Inicio",
+    "RIGHTS": "Todos los derechos reservados.",
+    "SUBTEXT": "Designed & Built with Angular 17+ Standalone & Spring Boot"
+  }
+}

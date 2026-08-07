@@ -1,0 +1,183 @@
+{
+  "NAV": {
+    "SOBRE_MI": "About me",
+    "PROYECTOS": "Projects",
+    "EDUCACION": "Education",
+    "METRICAS": "GitHub Metrics",
+    "HABLAR_IA": "Chat with AI",
+    "CERRAR_MENU": "Close menu",
+    "ABRIR_MENU": "Open menu",
+    "ASISTENTE_IA": "AI Assistant (Gemini)"
+  },
+  "HERO": {
+    "DISPONIBLE": "Available for new Full Stack opportunities",
+    "SALUDO": "Hi, I'm",
+    "ROL": "Full Stack",
+    "ROL_HIGHLIGHT": "Developer",
+    "BIO": "Specialized in designing and building scalable backend architectures with <strong>Java 17 & Spring Boot</strong>, deployable on <strong>Docker & AWS</strong>, combined with reactive and modern web interfaces in <strong>Angular 17+</strong>, <strong>TypeScript/JavaScript</strong>, and <strong>Supabase</strong>.",
+    "STACK_LABEL": "Main Tech Stack:",
+    "CTA_PROYECTOS": "View Projects",
+    "CTA_ASISTENTE": "Try AI Assistant",
+    "CTA_GITHUB": "GitHub"
+  },
+  "CODE_SNIPPET": {
+    "NOMBRE_KEY": "name",
+    "NOMBRE_VAL": "Yanina Dominé",
+    "ROL_KEY": "role",
+    "ROL_VAL": "Full Stack Developer",
+    "PROYECTOS_KEY": "featuredProjects",
+    "PROYECTO_1": "RECRED",
+    "PROYECTO_2": "Digital Invitation",
+    "ESTADO_KEY": "status",
+    "ESTADO_VAL": "Ready for Production 🚀"
+  },
+  "PROYECTOS": {
+    "TAG": "Featured Portfolio",
+    "TITULO": "Projects",
+    "TITULO_HIGHLIGHT": "Recent",
+    "SUBTITULO": "Explore software solutions built with solid architecture using Spring Boot and Angular.",
+    "CARGANDO": "Loading projects from backend server...",
+    "CARGANDO_AVISO": "(If the cloud server was sleeping, initial response may take a few seconds)",
+    "SIN_PROYECTOS": "No projects found.",
+    "DESTACADO": "Featured",
+    "REPOSITORIO": "Repository",
+    "VER_DEMO": "View Demo / API"
+  },
+  "PROJECTS": {
+    "recred": {
+      "TITLE": "RECRED",
+      "SUMMARY": "School buffet and academic credit management platform.",
+      "DESC": "Robust web system designed for comprehensive management of accreditations, credits, and academic certificates. Developed with modular Java 17 / Spring Boot backend, RESTful architecture, PostgreSQL / Supabase persistence, and a reactive Angular interface."
+    },
+    "RECRED": {
+      "TITLE": "RECRED",
+      "SUMMARY": "School buffet and academic credit management platform.",
+      "DESC": "Robust web system designed for comprehensive management of accreditations, credits, and academic certificates. Developed with modular Java 17 / Spring Boot backend, RESTful architecture, PostgreSQL / Supabase persistence, and a reactive Angular interface."
+    },
+    "invitacion": {
+      "TITLE": "Digital Graduation Invitation",
+      "SUMMARY": "Personal and interactive web application.",
+      "DESC": "Dynamic web application for customizable digital invitations with real-time RSVP confirmation, map location integration, countdown timer, interactive gallery, and audio player."
+    },
+    "INVITACION": {
+      "TITLE": "Digital Graduation Invitation",
+      "SUMMARY": "Personal and interactive web application.",
+      "DESC": "Dynamic web application for customizable digital invitations with real-time RSVP confirmation, map location integration, countdown timer, interactive gallery, and audio player."
+    },
+    "portfolio-backend": {
+      "TITLE": "Portfolio API Backend",
+      "SUMMARY": "Spring Boot microservice with AI integration (Gemini API).",
+      "DESC": "Clean architecture backend built with Java 17 and Spring Boot providing endpoints for GitHub metrics, project management, and Google Gemini API integration for automated recruiter chat responses."
+    },
+    "PORTFOLIO-BACKEND": {
+      "TITLE": "Portfolio API Backend",
+      "SUMMARY": "Spring Boot microservice with AI integration (Gemini API).",
+      "DESC": "Clean architecture backend built with Java 17 and Spring Boot providing endpoints for GitHub metrics, project management, and Google Gemini API integration for automated recruiter chat responses."
+    }
+  },
+  "EDUCACION": {
+    "TAG": "Career & Studies",
+    "TITULO": "Education",
+    "TITULO_HIGHLIGHT": "Background",
+    "CARGANDO": "Loading educational background from backend server...",
+    "CARGANDO_AVISO": "(Connecting to cloud server)",
+    "SIN_DATOS": "No educational data recorded.",
+    "CHIP_FULLSTACK": "Full Stack Web Development",
+    "CHIP_POO": "Object-Oriented Programming",
+    "CHIP_BD": "Relational Databases",
+    "CHIP_AGILE": "Agile Methodologies",
+    "unlam": {
+      "TITLE": "University Degree in Web Development",
+      "INSTITUTION": "National University of La Matanza (UNLaM)",
+      "PERIOD": "2021 - 2026",
+      "DESC": "Higher education focused on web development, relational databases, object-oriented programming, and agile methodologies."
+    },
+    "UNLAM": {
+      "TITLE": "University Degree in Web Development",
+      "INSTITUTION": "National University of La Matanza (UNLaM)",
+      "PERIOD": "2021 - 2026",
+      "DESC": "Higher education focused on web development, relational databases, object-oriented programming, and agile methodologies."
+    }
+  },
+  "EDUCATION": {
+    "TAG": "Career & Studies",
+    "TITLE": "Education",
+    "TITLE_HIGHLIGHT": "Background",
+    "LOADING": "Loading educational background from backend server...",
+    "LOADING_NOTICE": "(Connecting to cloud server)",
+    "EMPTY": "No educational data recorded.",
+    "unlam": {
+      "TITLE": "University Degree in Web Development",
+      "INSTITUTION": "National University of La Matanza (UNLaM)",
+      "PERIOD": "2021 - 2026",
+      "DESC": "Higher education focused on web development, relational databases, object-oriented programming, and agile methodologies."
+    },
+    "UNLAM": {
+      "TITLE": "University Degree in Web Development",
+      "INSTITUTION": "National University of La Matanza (UNLaM)",
+      "PERIOD": "2021 - 2026",
+      "DESC": "Higher education focused on web development, relational databases, object-oriented programming, and agile methodologies."
+    }
+  },
+  "GITHUB": {
+    "TAG": "Backend API Integration",
+    "TITLE": "GitHub",
+    "TITLE_HIGHLIGHT": "Metrics",
+    "SUBTITLE": "Real-time statistics synchronized through Spring Boot microservice with GitHub REST API.",
+    "LOADING": "Fetching synchronized GitHub metrics...",
+    "PROFILE_ROLE": "Full Stack Developer | Open Source",
+    "REPOS_PUBLISHED": "Public Repos",
+    "STARS_RECEIVED": "Stars Received",
+    "VIEW_PROFILE": "View Official Profile",
+    "FEATURED_REPOS": "Recent Featured Repositories",
+    "EXPLORE": "Explore"
+  },
+  "GITHUB_REPOS": {
+    "RECRED": {
+      "DESC": "School buffet accreditation and academic credit management system (Spring Boot + Angular)."
+    },
+    "INVITACION_DIGITAL": {
+      "DESC": "Interactive digital invitation platform with real-time RSVP confirmation."
+    },
+    "PORTFOLIO_BACKEND": {
+      "DESC": "Spring Boot REST API with Gemini AI integration and GitHub metrics."
+    },
+    "PORTFOLIO_FRONTEND": {
+      "DESC": "Angular 17+ Standalone application with Developer Dark Mode design and i18n."
+    }
+  },
+  "CHAT": {
+    "TAG": "Gemini Virtual Assistant",
+    "TITULO": "Assistant with",
+    "TITULO_HIGHLIGHT": "Artificial Intelligence",
+    "SUBTITULO": "Are you a recruiter or tech lead? Ask the AI any open questions about Yanina's experience, projects, and stack.",
+    "SUBTITLE": "Are you a recruiter or tech lead? Ask the AI any open questions about Yanina's experience, projects, and stack.",
+    "HEADER_TITLE": "Gemini Assistant (Spring Boot AI API)",
+    "ESTADO_CONECTADO": "Connected",
+    "REINICIAR_TOOLTIP": "Reset conversation",
+    "PREGUNTAS_RAPIDAS": "Quick questions:",
+    "SENDER_BOT": "Yanina's Assistant",
+    "SENDER_USER": "You (Recruiter)",
+    "CARGANDO_BOT": "AI typing",
+    "PLACEHOLDER_INPUT": "Type your question here (e.g. What projects has she built with Spring Boot and Angular?)...",
+    "BOTON_ENVIAR": "Send",
+    "MENSAJE_INICIAL": "Hello! I am **Yanina Dominé**'s intelligent virtual assistant. I'm configured to answer any questions about her projects in **Spring Boot**, **Angular 17+**, **Supabase**, and her career. How can I help you today?",
+    "MENSAJE_REINICIADO": "Conversation reset. What other questions do you have about **Yanina**'s profile?",
+    "MENSAJE_ERROR": "The backend cloud server is waking up or experiencing latency. Please try asking your question again in a few moments.",
+    "SUGERENCIA_1": "What is Yanina's experience?",
+    "SUGERENCIA_2": "What technologies does she use for backend and frontend?",
+    "SUGERENCIA_3": "What features does the RECRED project have?",
+    "SUGERENCIA_4": "How can I contact her for an interview?"
+  },
+  "FOOTER": {
+    "BIO": "Full Stack Developer passionate about clean software engineering, Java 17 / Spring Boot architectures, and dynamic interfaces in Angular.",
+    "BACKEND_ACTIVE": "Spring Boot Backend Active",
+    "NAV_TITULO": "Navigation",
+    "TECH_TITULO": "Technologies",
+    "CONNECT_TITULO": "Connect",
+    "CONNECT_DESC": "Interested in working together?",
+    "INICIO": "Home",
+    "RIGHTS": "All rights reserved.",
+    "SUBTEXT": "Designed & Built with Angular 17+ Standalone & Spring Boot"
+  }
+}

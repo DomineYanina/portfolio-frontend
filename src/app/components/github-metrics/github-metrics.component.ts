@@ -1,32 +1,33 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslatePipe } from '@ngx-translate/core';
 import { PortfolioService } from '../../services/portfolio.service';
-import { GithubMetrics } from '../../models/portfolio.models';
+import { GithubMetrics, GithubRepo } from '../../models/portfolio.models';
 
 @Component({
   selector: 'app-github-metrics',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslatePipe],
   template: `
     <section id="metricas" class="section-padding github-section">
       <div class="container">
         <!-- Section Header -->
         <div class="section-header">
           <span class="section-tag">
-            <i class="fa-brands fa-github"></i> Integración Backend API
+            <i class="fa-brands fa-github"></i> {{ 'GITHUB.TAG' | translate }}
           </span>
           <h2 class="section-title">
-            Métricas de <span class="text-gradient">GitHub</span>
+            {{ 'GITHUB.TITLE' | translate }} <span class="text-gradient">{{ 'GITHUB.TITLE_HIGHLIGHT' | translate }}</span>
           </h2>
           <p class="section-subtitle">
-            Estadísticas en tiempo real sincronizadas a través del microservicio Spring Boot con la API REST de GitHub.
+            {{ 'GITHUB.SUBTITLE' | translate }}
           </p>
         </div>
 
         <!-- Loading -->
         <div *ngIf="cargando()" class="loading-container">
           <div class="spinner"></div>
-          <p class="text-mono">Obteniendo métricas sincronizadas de GitHub...</p>
+          <p class="text-mono">{{ 'GITHUB.LOADING' | translate }}</p>
         </div>
 
         <!-- Metrics Visual Panel -->
@@ -40,7 +41,7 @@ import { GithubMetrics } from '../../models/portfolio.models';
               </div>
               <div class="profile-text">
                 <h3 class="username">&#64;{{ metrics()?.username }}</h3>
-                <p class="profile-role">Desarrolladora Full Stack | Open Source</p>
+                <p class="profile-role">{{ 'GITHUB.PROFILE_ROLE' | translate }}</p>
               </div>
             </div>
 
@@ -48,11 +49,11 @@ import { GithubMetrics } from '../../models/portfolio.models';
             <div class="stats-counters">
               <div class="stat-box">
                 <span class="stat-value text-gradient">{{ metrics()?.publicRepos }}</span>
-                <span class="stat-label">Repos Publicados</span>
+                <span class="stat-label">{{ 'GITHUB.REPOS_PUBLISHED' | translate }}</span>
               </div>
               <div class="stat-box">
                 <span class="stat-value text-copper">{{ metrics()?.starsCount || '24+' }}</span>
-                <span class="stat-label">Estrellas Recibidas</span>
+                <span class="stat-label">{{ 'GITHUB.STARS_RECEIVED' | translate }}</span>
               </div>
             </div>
 
@@ -64,14 +65,14 @@ import { GithubMetrics } from '../../models/portfolio.models';
                 rel="noopener noreferrer" 
                 class="btn btn-outline">
                 <i class="fa-brands fa-github"></i>
-                <span>Ver Perfil Oficial</span>
+                <span>{{ 'GITHUB.VIEW_PROFILE' | translate }}</span>
               </a>
             </div>
           </div>
 
           <!-- Recent Repos Grid -->
           <div class="repos-section-title">
-            <h4><i class="fa-solid fa-code-fork text-copper"></i> Repositorios Destacados Recientes</h4>
+            <h4><i class="fa-solid fa-code-fork text-copper"></i> {{ 'GITHUB.FEATURED_REPOS' | translate }}</h4>
           </div>
 
           <div class="repos-grid">
@@ -86,7 +87,9 @@ import { GithubMetrics } from '../../models/portfolio.models';
                 </span>
               </div>
 
-              <p class="repo-desc">{{ repo.description }}</p>
+              <p class="repo-desc">
+                {{ 'GITHUB_REPOS.' + getRepoKey(repo) + '.DESC' | translate }}
+              </p>
 
               <div class="repo-footer">
                 <span class="repo-lang text-mono">
@@ -95,7 +98,7 @@ import { GithubMetrics } from '../../models/portfolio.models';
                 </span>
 
                 <a [href]="repo.htmlUrl" target="_blank" rel="noopener noreferrer" class="repo-link">
-                  <span>Explorar</span> <i class="fa-solid fa-arrow-right"></i>
+                  <span>{{ 'GITHUB.EXPLORE' | translate }}</span> <i class="fa-solid fa-arrow-right"></i>
                 </a>
               </div>
             </div>
@@ -347,5 +350,16 @@ export class GithubMetricsComponent implements OnInit {
   getLanguageDotClass(lang: string): string {
     if (!lang) return '';
     return lang.toLowerCase();
+  }
+
+  getRepoKey(repo: GithubRepo): string {
+    if (repo.key) return repo.key;
+    if (!repo.name) return '';
+    const name = repo.name.toUpperCase().replace(/[-_]/g, '_');
+    if (name.includes('RECRED')) return 'RECRED';
+    if (name.includes('INVITACIO') || name.includes('RECIBIDA')) return 'INVITACION_DIGITAL';
+    if (name.includes('PORTFOLIO_BACKEND')) return 'PORTFOLIO_BACKEND';
+    if (name.includes('PORTFOLIO_FRONTEND')) return 'PORTFOLIO_FRONTEND';
+    return name;
   }
 }

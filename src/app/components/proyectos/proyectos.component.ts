@@ -1,41 +1,42 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslatePipe } from '@ngx-translate/core';
 import { PortfolioService } from '../../services/portfolio.service';
 import { Proyecto } from '../../models/portfolio.models';
 
 @Component({
   selector: 'app-proyectos',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslatePipe],
   template: `
     <section id="proyectos" class="section-padding proyectos-section">
       <div class="container">
         <!-- Section Header -->
         <div class="section-header">
           <span class="section-tag">
-            <i class="fa-solid fa-code-commit"></i> Portafolio Destacado
+            <i class="fa-solid fa-code-commit"></i> {{ 'PROYECTOS.TAG' | translate }}
           </span>
           <h2 class="section-title">
-            Proyectos <span class="text-gradient">Recientes</span>
+            {{ 'PROYECTOS.TITULO' | translate }} <span class="text-gradient">{{ 'PROYECTOS.TITULO_HIGHLIGHT' | translate }}</span>
           </h2>
           <p class="section-subtitle">
-            Explora las soluciones de software desarrolladas con arquitectura sólida en Spring Boot y Angular.
+            {{ 'PROYECTOS.SUBTITULO' | translate }}
           </p>
         </div>
 
         <!-- Loading State -->
         <div *ngIf="cargando()" class="loading-container">
           <div class="spinner"></div>
-          <p class="text-mono">Cargando proyectos desde el servidor backend...</p>
+          <p class="text-mono">{{ 'PROYECTOS.CARGANDO' | translate }}</p>
           <small class="text-muted" style="display: block; margin-top: 0.5rem;">
-            (Si el servidor de la nube estaba suspendido, la respuesta inicial puede tomar unos segundos)
+            {{ 'PROYECTOS.CARGANDO_AVISO' | translate }}
           </small>
         </div>
 
         <!-- Error / Empty State -->
         <div *ngIf="!cargando() && proyectos().length === 0" class="empty-state glass-panel">
           <i class="fa-solid fa-folder-open empty-icon"></i>
-          <p>No se encontraron proyectos disponibles.</p>
+          <p>{{ 'PROYECTOS.SIN_PROYECTOS' | translate }}</p>
         </div>
 
         <!-- Projects Grid -->
@@ -47,7 +48,7 @@ import { Proyecto } from '../../models/portfolio.models';
             
             <!-- Featured Tag -->
             <div *ngIf="p.destacado" class="card-featured-badge">
-              <i class="fa-solid fa-star"></i> Destacado
+              <i class="fa-solid fa-star"></i> {{ 'PROYECTOS.DESTACADO' | translate }}
             </div>
 
             <!-- Card Header -->
@@ -56,14 +57,20 @@ import { Proyecto } from '../../models/portfolio.models';
                 <i class="fa-solid" [ngClass]="getProjectIcon(p.titulo)"></i>
               </div>
               <div class="header-text">
-                <h3 class="project-title">{{ p.titulo }}</h3>
-                <p class="project-summary">{{ p.resumen }}</p>
+                <h3 class="project-title">
+                  {{ p.key ? ('PROJECTS.' + p.key + '.TITLE' | translate) : p.titulo }}
+                </h3>
+                <p class="project-summary">
+                  {{ p.key ? ('PROJECTS.' + p.key + '.SUMMARY' | translate) : p.resumen }}
+                </p>
               </div>
             </div>
 
             <!-- Card Description -->
             <div class="card-body">
-              <p class="project-desc">{{ p.descripcion }}</p>
+              <p class="project-desc">
+                {{ p.key ? ('PROJECTS.' + p.key + '.DESC' | translate) : p.descripcion }}
+              </p>
 
               <!-- Technologies List -->
               <div class="project-techs">
@@ -81,7 +88,7 @@ import { Proyecto } from '../../models/portfolio.models';
                 rel="noopener noreferrer" 
                 class="btn btn-secondary btn-sm flex-1">
                 <i class="fa-brands fa-github"></i>
-                <span>Repositorio</span>
+                <span>{{ 'PROYECTOS.REPOSITORIO' | translate }}</span>
               </a>
 
               <a 
@@ -91,7 +98,7 @@ import { Proyecto } from '../../models/portfolio.models';
                 rel="noopener noreferrer" 
                 class="btn btn-primary btn-sm flex-1">
                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                <span>Ver Demo / API</span>
+                <span>{{ 'PROYECTOS.VER_DEMO' | translate }}</span>
               </a>
             </div>
           </div>

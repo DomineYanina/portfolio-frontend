@@ -1,10 +1,12 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslatePipe } from '@ngx-translate/core';
+import { LanguageSwitcherComponent } from '../language-switcher/language-switcher.component';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslatePipe, LanguageSwitcherComponent],
   template: `
     <header class="navbar-header" [class.scrolled]="isScrolled()">
       <div class="container navbar-container">
@@ -20,32 +22,34 @@ import { CommonModule } from '@angular/common';
         <nav class="nav-links">
           <a href="#sobre-mi" class="nav-item">
             <i class="fa-solid fa-user text-sand"></i>
-            <span>Sobre mí</span>
+            <span>{{ 'NAV.SOBRE_MI' | translate }}</span>
           </a>
           <a href="#proyectos" class="nav-item">
             <i class="fa-solid fa-code text-sand"></i>
-            <span>Proyectos</span>
+            <span>{{ 'NAV.PROYECTOS' | translate }}</span>
           </a>
           <a href="#educacion" class="nav-item">
             <i class="fa-solid fa-graduation-cap text-sand"></i>
-            <span>Educación</span>
+            <span>{{ 'NAV.EDUCACION' | translate }}</span>
           </a>
           <a href="#metricas" class="nav-item">
             <i class="fa-brands fa-github text-sand"></i>
-            <span>Métricas GitHub</span>
+            <span>{{ 'NAV.METRICAS' | translate }}</span>
           </a>
         </nav>
 
         <!-- Action & Mobile Toggle -->
         <div class="nav-actions">
+          <app-language-switcher></app-language-switcher>
+
           <a href="#asistente" class="btn btn-primary btn-sm">
             <i class="fa-solid fa-comments"></i>
-            <span>Hablar con IA</span>
+            <span>{{ 'NAV.HABLAR_IA' | translate }}</span>
           </a>
           <button 
             class="mobile-toggle-btn" 
             (click)="toggleMenu()"
-            [attr.aria-label]="isMenuOpen() ? 'Cerrar menú' : 'Abrir menú'">
+            [attr.aria-label]="isMenuOpen() ? ('NAV.CERRAR_MENU' | translate) : ('NAV.ABRIR_MENU' | translate)">
             <i class="fa-solid" [class.fa-bars]="!isMenuOpen()" [class.fa-xmark]="isMenuOpen()"></i>
           </button>
         </div>
@@ -55,20 +59,23 @@ import { CommonModule } from '@angular/common';
       <div class="mobile-dropdown" [class.open]="isMenuOpen()">
         <nav class="mobile-nav-list">
           <a href="#sobre-mi" (click)="closeMenu()" class="mobile-nav-item">
-            <i class="fa-solid fa-user"></i> Sobre mí
+            <i class="fa-solid fa-user"></i> {{ 'NAV.SOBRE_MI' | translate }}
           </a>
           <a href="#proyectos" (click)="closeMenu()" class="mobile-nav-item">
-            <i class="fa-solid fa-code"></i> Proyectos
+            <i class="fa-solid fa-code"></i> {{ 'NAV.PROYECTOS' | translate }}
           </a>
           <a href="#educacion" (click)="closeMenu()" class="mobile-nav-item">
-            <i class="fa-solid fa-graduation-cap"></i> Educación
+            <i class="fa-solid fa-graduation-cap"></i> {{ 'NAV.EDUCACION' | translate }}
           </a>
           <a href="#metricas" (click)="closeMenu()" class="mobile-nav-item">
-            <i class="fa-brands fa-github"></i> Métricas GitHub
+            <i class="fa-brands fa-github"></i> {{ 'NAV.METRICAS' | translate }}
           </a>
           <a href="#asistente" (click)="closeMenu()" class="mobile-nav-item">
-            <i class="fa-solid fa-wand-magic-sparkles"></i> Asistente IA (Gemini)
+            <i class="fa-solid fa-wand-magic-sparkles"></i> {{ 'NAV.ASISTENTE_IA' | translate }}
           </a>
+          <div class="mobile-lang-switcher">
+            <app-language-switcher></app-language-switcher>
+          </div>
         </nav>
       </div>
     </header>

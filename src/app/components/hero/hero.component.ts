@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslatePipe],
   template: `
     <section id="hero" class="hero-section section-padding">
       <div class="container hero-container">
@@ -13,26 +14,23 @@ import { CommonModule } from '@angular/common';
           <!-- Availability Badge -->
           <div class="badge-status">
             <span class="status-dot"></span>
-            <span>Disponible para nuevos desafíos Full Stack</span>
+            <span>{{ 'HERO.DISPONIBLE' | translate }}</span>
           </div>
 
           <!-- Main Heading -->
           <h1 class="hero-title">
-            Hola, soy <span class="text-gradient">Yanina Dominé</span>
+            {{ 'HERO.SALUDO' | translate }} <span class="text-gradient">Yanina Dominé</span>
           </h1>
           <h2 class="hero-subtitle">
-            Desarrolladora <span class="highlight-copper">Full Stack</span>
+            {{ 'HERO.ROL' | translate }} <span class="highlight-copper">{{ 'HERO.ROL_HIGHLIGHT' | translate }}</span>
           </h2>
 
           <!-- Bio Pitch -->
-          <p class="hero-bio">
-            Especializada en el diseño y construcción de arquitecturas backend escalables con 
-            <strong>Java 17 & Spring Boot</strong>, desplegables en <strong>Docker & AWS</strong>, combinadas con interfaces web reactivas y modernas en <strong>Angular 17+</strong>, <strong>TypeScript/JavaScript</strong> y <strong>Supabase</strong>.
-          </p>
+          <p class="hero-bio" [innerHTML]="'HERO.BIO' | translate"></p>
 
           <!-- Tech Stack Chips -->
           <div class="tech-stack-container">
-            <span class="tech-label"><i class="fa-solid fa-layer-group"></i> Stack Principal:</span>
+            <span class="tech-label"><i class="fa-solid fa-layer-group"></i> {{ 'HERO.STACK_LABEL' | translate }}</span>
             <div class="tech-badges">
               <span class="tech-badge java"><i class="fa-brands fa-java"></i> Java 17</span>
               <span class="tech-badge spring"><i class="fa-solid fa-leaf"></i> Spring Boot</span>
@@ -51,15 +49,15 @@ import { CommonModule } from '@angular/common';
           <div class="hero-ctas">
             <a href="#proyectos" class="btn btn-primary">
               <i class="fa-solid fa-diagram-project"></i>
-              <span>Ver Proyectos</span>
+              <span>{{ 'HERO.CTA_PROYECTOS' | translate }}</span>
             </a>
             <a href="#asistente" class="btn btn-outline">
               <i class="fa-solid fa-wand-magic-sparkles"></i>
-              <span>Probar Asistente IA</span>
+              <span>{{ 'HERO.CTA_ASISTENTE' | translate }}</span>
             </a>
             <a href="https://github.com/DomineYanina" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
               <i class="fa-brands fa-github"></i>
-              <span>GitHub</span>
+              <span>{{ 'HERO.CTA_GITHUB' | translate }}</span>
             </a>
           </div>
         </div>
@@ -77,14 +75,14 @@ import { CommonModule } from '@angular/common';
             </div>
             <div class="terminal-body text-mono">
               <p><span class="code-keyword">const</span> <span class="code-variable">developer</span> = &#123;</p>
-              <p class="indent-1"><span class="code-property">nombre</span>: <span class="code-string">'Yanina Dominé'</span>,</p>
-              <p class="indent-1"><span class="code-property">rol</span>: <span class="code-string">'Full Stack Developer'</span>,</p>
+              <p class="indent-1"><span class="code-property">{{ 'CODE_SNIPPET.NOMBRE_KEY' | translate }}</span>: <span class="code-string">'{{ 'CODE_SNIPPET.NOMBRE_VAL' | translate }}'</span>,</p>
+              <p class="indent-1"><span class="code-property">{{ 'CODE_SNIPPET.ROL_KEY' | translate }}</span>: <span class="code-string">'{{ 'CODE_SNIPPET.ROL_VAL' | translate }}'</span>,</p>
               <p class="indent-1"><span class="code-property">backend</span>: [<span class="code-string">'Java 17'</span>, <span class="code-string">'Spring Boot'</span>, <span class="code-string">'PostgreSQL'</span>, <span class="code-string">'Docker'</span>],</p>
               <p class="indent-1"><span class="code-property">frontend</span>: [<span class="code-string">'Angular 17+'</span>, <span class="code-string">'TypeScript'</span>, <span class="code-string">'JavaScript'</span>, <span class="code-string">'HTML5/CSS'</span>],</p>
               <p class="indent-1"><span class="code-property">cloudInfra</span>: [<span class="code-string">'AWS'</span>, <span class="code-string">'Supabase'</span>],</p>
-              <p class="indent-1"><span class="code-property">proyectosDestacados</span>: [<span class="code-string">'RECRED'</span>, <span class="code-string">'Invitación Digital'</span>],</p>
+              <p class="indent-1"><span class="code-property">{{ 'CODE_SNIPPET.PROYECTOS_KEY' | translate }}</span>: [<span class="code-string">'{{ 'CODE_SNIPPET.PROYECTO_1' | translate }}'</span>, <span class="code-string">'{{ 'CODE_SNIPPET.PROYECTO_2' | translate }}'</span>],</p>
               <p class="indent-1"><span class="code-property">iaIntegration</span>: <span class="code-string">'Google Gemini API'</span>,</p>
-              <p class="indent-1"><span class="code-property">estado</span>: <span class="code-string">'Ready for Production 🚀'</span></p>
+              <p class="indent-1"><span class="code-property">{{ 'CODE_SNIPPET.ESTADO_KEY' | translate }}</span>: <span class="code-string">'{{ 'CODE_SNIPPET.ESTADO_VAL' | translate }}'</span></p>
               <p>&#125;;</p>
               <div class="terminal-cursor-line">
                 <span class="code-prompt">&gt;</span> <span class="code-cmd">Yanina.getPortfolioInfo();</span>

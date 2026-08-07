@@ -1,5 +1,6 @@
 export interface Proyecto {
   id?: number | string;
+  key?: string;
   titulo: string;
   resumen: string;
   descripcion: string;
@@ -12,6 +13,7 @@ export interface Proyecto {
 
 export interface Educacion {
   id?: number | string;
+  key?: string;
   institucion: string;
   titulo: string;
   periodo: string;
@@ -21,6 +23,7 @@ export interface Educacion {
 
 export interface GithubRepo {
   name: string;
+  key?: string;
   description: string;
   htmlUrl: string;
   stars: number;
@@ -39,6 +42,7 @@ export interface GithubMetrics {
 
 export interface ChatPreguntaRequest {
   pregunta: string;
+  language?: string;
 }
 
 export interface ChatRespuestaResponse {

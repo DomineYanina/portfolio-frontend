@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslatePipe],
   template: `
     <footer class="footer-section">
       <div class="container">
@@ -19,31 +20,30 @@ import { CommonModule } from '@angular/common';
               <span class="brand-bracket">/&gt;</span>
             </a>
             <p class="footer-bio">
-              Desarrolladora Full Stack apasionada por la ingeniería de software limpia, 
-              arquitecturas en Java 17 / Spring Boot e interfaces dinámicas en Angular.
+              {{ 'FOOTER.BIO' | translate }}
             </p>
             <div class="backend-badge">
               <span class="status-dot"></span>
-              <span>Spring Boot Backend Active</span>
+              <span>{{ 'FOOTER.BACKEND_ACTIVE' | translate }}</span>
             </div>
           </div>
 
           <!-- Column 2: Quick Links -->
           <div class="footer-col">
-            <h4 class="footer-title">Navegación</h4>
+            <h4 class="footer-title">{{ 'FOOTER.NAV_TITULO' | translate }}</h4>
             <ul class="footer-links">
-              <li><a href="#hero"><i class="fa-solid fa-angle-right"></i> Inicio</a></li>
-              <li><a href="#sobre-mi"><i class="fa-solid fa-angle-right"></i> Sobre mí</a></li>
-              <li><a href="#proyectos"><i class="fa-solid fa-angle-right"></i> Proyectos</a></li>
-              <li><a href="#educacion"><i class="fa-solid fa-angle-right"></i> Educación</a></li>
-              <li><a href="#metricas"><i class="fa-solid fa-angle-right"></i> Métricas GitHub</a></li>
-              <li><a href="#asistente"><i class="fa-solid fa-angle-right"></i> Asistente IA</a></li>
+              <li><a href="#hero"><i class="fa-solid fa-angle-right"></i> {{ 'FOOTER.INICIO' | translate }}</a></li>
+              <li><a href="#sobre-mi"><i class="fa-solid fa-angle-right"></i> {{ 'NAV.SOBRE_MI' | translate }}</a></li>
+              <li><a href="#proyectos"><i class="fa-solid fa-angle-right"></i> {{ 'NAV.PROYECTOS' | translate }}</a></li>
+              <li><a href="#educacion"><i class="fa-solid fa-angle-right"></i> {{ 'NAV.EDUCACION' | translate }}</a></li>
+              <li><a href="#metricas"><i class="fa-solid fa-angle-right"></i> {{ 'NAV.METRICAS' | translate }}</a></li>
+              <li><a href="#asistente"><i class="fa-solid fa-angle-right"></i> {{ 'NAV.ASISTENTE_IA' | translate }}</a></li>
             </ul>
           </div>
 
           <!-- Column 3: Stack -->
           <div class="footer-col">
-            <h4 class="footer-title">Tecnologías</h4>
+            <h4 class="footer-title">{{ 'FOOTER.TECH_TITULO' | translate }}</h4>
             <ul class="footer-links text-mono">
               <li><span class="tech-item"><i class="fa-brands fa-java text-orange"></i> Java 17 / Spring</span></li>
               <li><span class="tech-item"><i class="fa-brands fa-angular text-red"></i> Angular 17+</span></li>
@@ -56,8 +56,8 @@ import { CommonModule } from '@angular/common';
 
           <!-- Column 4: Contact & Socials -->
           <div class="footer-col">
-            <h4 class="footer-title">Conectar</h4>
-            <p class="contact-desc">¿Interesado/a en trabajar juntos?</p>
+            <h4 class="footer-title">{{ 'FOOTER.CONNECT_TITULO' | translate }}</h4>
+            <p class="contact-desc">{{ 'FOOTER.CONNECT_DESC' | translate }}</p>
             <div class="social-links">
               <a href="https://github.com/DomineYanina" target="_blank" rel="noopener noreferrer" class="social-btn" title="GitHub">
                 <i class="fa-brands fa-github"></i>
@@ -75,8 +75,8 @@ import { CommonModule } from '@angular/common';
 
         <!-- Bottom Copyright Bar -->
         <div class="footer-bottom">
-          <p>© {{ currentYear }} Yanina Dominé. Todos los derechos reservados.</p>
-          <p class="footer-subtext text-mono">Designed & Built with Angular 17+ Standalone & Spring Boot</p>
+          <p>© {{ currentYear }} Yanina Dominé. {{ 'FOOTER.RIGHTS' | translate }}</p>
+          <p class="footer-subtext text-mono">{{ 'FOOTER.SUBTEXT' | translate }}</p>
         </div>
       </div>
     </footer>
